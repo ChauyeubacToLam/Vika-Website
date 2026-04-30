@@ -1,0 +1,89 @@
+/* Cấu hình phông chữ cơ bản */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Định nghĩa biến màu sắc cho Light Theme */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9; 
+    
+    --text-primary: #09090b;
+    --text-secondary: #52525b;
+}
+
+/* Định nghĩa biến màu sắc cho Dark Theme */
+html.dark {
+    --bg-primary: #18181b;
+    --bg-secondary: #54565B; /* Đã điều chỉnh từ #54565B về màu tối sâu để đồng bộ với Header */
+    --bg-tertiary: #27272a;
+    
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+}
+
+/* Tùy chỉnh hiệu ứng mượt mà khi chuyển Dark/Light mode */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
+}
+
+/* Ẩn thanh cuộn cho khu vực filter vuốt ngang */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Ràng buộc số dòng text hiển thị cho tên bài tập */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+}
+
+/* Hiệu ứng gạch chân cho menu đang ở trang hiện tại */
+.nav-active {
+    color: #ffb701 !important;
+    position: relative;
+    font-weight: 700;
+}
+
+.nav-active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background-color: #ffb701;
+    border-radius: 2px;
+}
+
+/* Smooth Scrolling cho toàn trang */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hiệu ứng hover cho các card bài tập */
+#library-grid > div:hover {
+    transform: translateY(-4px);
+
+/* Đảm bảo logo không bị dính đường gạch chân khi có class nav-active */
+#nav-logo.nav-active::after {
+    display: none;
+}
+
+#nav-logo img {
+    /* Nếu bạn chưa kịp xóa nền vàng, có thể dùng tạm filter này 
+       để hòa trộn (tuy nhiên xóa nền thủ công vẫn là tốt nhất) */
+    filter: drop-shadow(0 0 2px rgba(255, 183, 1, 0.2));
+}
+}

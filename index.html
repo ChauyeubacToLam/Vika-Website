@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Ultimate Workout Planner & Tracking App for Progress - VIKA</title>
+    
+    <!-- Nhúng CSS tùy chỉnh -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <!-- Nhúng Tailwind CSS để render các class có sẵn trong code -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-secondary': 'var(--bg-secondary)',
+                        'bg-tertiary': 'var(--bg-tertiary)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'secondary-gray': '#6D6D6D',
+                        'main-red': '#ffb701',
+                        'accent-indigo': '#4C419F',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-bg-secondary text-text-primary transition-colors duration-300">
+
+<!-- Header / Navbar -->
+<header class="fixed top-0 left-0 right-0 z-10 backdrop-blur-xl bg-blend-saturation bg-[#09090b]/90 shadow-sm text-white">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-5 h-14 lg:px-8">
+ <div class="flex lg:flex-1">
+    <a href="#" id="nav-logo" class="flex items-center transition-transform hover:scale-105">
+        <!-- Thay thế chữ VIKA bằng thẻ img -->
+        <img src="logo 1.png" alt="VIKA Logo" class="h-14 w-auto object-contain" />
+    </a>
+</div>
+<!-- Khối Menu chính giữa -->
+<div class="hidden lg:flex items-center xl:gap-x-8 lg:gap-x-4">
+    <a href="#" id="nav-menu-home" class="nav-active text-base font-medium hover:text-main-red transition-colors">Trang chủ</a>
+    <a href="#" class="text-base font-medium hover:text-main-red transition-colors">Về chúng tôi</a>
+    <a href="#" class="text-base font-medium hover:text-main-red transition-colors">Thông tin hữu ích</a>
+    
+    <!-- Nút Bài tập với Dropdown -->
+    <div class="relative group" id="nav-baitap-container">
+        <a href="#" id="nav-baitap" class="text-base font-medium hover:text-main-red transition-colors flex items-center gap-1 cursor-pointer">
+            Bài tập
+            <svg class="w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </a>
+        
+        <!-- Menu thả xuống -->
+        <div id="dropdown-baitap" class="absolute left-0 mt-4 w-48 rounded-xl shadow-lg bg-white dark:bg-[#18181b] ring-1 ring-black ring-opacity-5 hidden opacity-0 transition-all duration-200 z-50 border border-gray-200 dark:border-gray-800 overflow-hidden">
+            <div class="py-2" role="menu">
+                <a href="#" class="block px-5 py-2.5 text-sm font-medium text-text-primary hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-main-red transition-colors category-link">Workout</a>
+                <a href="#" class="block px-5 py-2.5 text-sm font-medium text-text-primary hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-main-red transition-colors category-link">Gym cơ bản</a>
+                <a href="#" class="block px-5 py-2.5 text-sm font-medium text-text-primary hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-main-red transition-colors category-link">Yoga</a>
+                <a href="#" class="block px-5 py-2.5 text-sm font-medium text-text-primary hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-main-red transition-colors category-link">Pilates</a>
+                <a href="#" class="block px-5 py-2.5 text-sm font-medium text-text-primary hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-main-red transition-colors category-link">Boxing</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mục thêm mới (Kiểm tra kỹ để không bị dán trùng ở đây) -->
+    <a href="#" class="text-base font-medium hover:text-main-red transition-colors whitespace-nowrap">Dinh dưỡng</a>
+    <a href="#" class="text-base font-medium hover:text-main-red transition-colors whitespace-nowrap">Xem thêm</a>
+</div>
+        <div class="flex flex-1 items-center justify-end gap-4">
+            <button id="theme-toggle" class="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition">
+                🌓
+            </button>
+        </div>
+    </nav>
+</header>
+
+ <main class="min-h-screen pt-14 pb-12">
+    <!-- Hero Section (Bố cục chia đôi 50/50) -->
+    <section class="relative w-full flex flex-col lg:flex-row min-h-screen">
+        
+        <!-- Nửa trái: Nội dung văn bản -->
+        <div class="w-full lg:w-1/2 flex flex-col justify-center items-start px-8 lg:px-16 xl:px-24 py-16 bg-bg-secondary">
+        <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6 text-text-primary">Track & Plan Workouts</h1>
+        <p class="text-xl font-normal text-text-secondary mb-10 max-w-lg">Plan workouts, access elite plans, use personalized metrics, and connect with a supportive community</p>
+        
+        <!-- Nút Get Started -->
+<!-- Khu vực Form Đăng ký & Đăng nhập -->
+<div class="w-full max-w-md mt-4">
+    <!-- Form nhập email -->
+<form id="email-form" class="flex w-full shadow-sm rounded-lg overflow-hidden border border-gray-300 dark:border-gray-700 mb-6">
+    <input 
+        id="email-input"
+        name="email"
+        type="email" 
+        placeholder="Nhập địa chỉ email của bạn..." 
+        class="w-full px-4 py-3.5 bg-white dark:bg-[#18181b] text-text-primary focus:outline-none focus:ring-2 focus:ring-main-red focus:border-transparent transition-all"
+        required
+    />
+    <button 
+        id="submit-btn"
+        type="submit" 
+        class="px-6 py-3.5 bg-main-red text-white font-semibold whitespace-nowrap hover:bg-red-700 transition-colors">
+        Trải nghiệm ngay
+    </button>
+</form>
+
+    <!-- Đường phân cách -->
+    <div class="flex items-center mb-6">
+        <div class="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
+        <span class="px-4 text-sm font-medium text-text-secondary">Hoặc</span>
+        <div class="flex-grow border-t border-gray-300 dark:border-gray-700"></div>
+    </div>
+
+    <!-- Tùy chọn Đăng nhập mạng xã hội -->
+    <div class="flex flex-col sm:flex-row gap-3">
+        <!-- Nút Google -->
+        <button type="button" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-[#18181b] text-text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium shadow-sm">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Google
+        </button>
+        
+        <!-- Nút Facebook -->
+        <button type="button" class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-[#18181b] text-text-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium shadow-sm">
+            <svg class="w-5 h-5" fill="#1877F2" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            Facebook
+        </button>
+    </div>
+</div>
+    </div>
+
+    <!-- Nửa phải: Ảnh nền tĩnh và Điện thoại chứa Video -->
+    <!-- Anh thay đường dẫn ảnh nền vào thuộc tính url() bên dưới -->
+    <div class="w-full lg:w-1/2 relative flex items-center justify-center min-h-[600px] bg-cover bg-center bg-no-repeat" 
+         style="background-image: url('ảnh\ nền.png');">
+        
+        <!-- Lớp phủ tối mờ giúp điện thoại nổi bật hơn trên nền ảnh (có thể tùy chỉnh hoặc xóa nếu không cần) -->
+        <div class="absolute inset-0 bg-black/40"></div>
+        
+        <!-- Điện thoại chứa video -->
+        <div class="z-10 w-72 h-[580px] bg-gray-300 dark:bg-gray-800 rounded-[2.5rem] border-[12px] border-[#1c1c1e] shadow-2xl flex items-center justify-center overflow-hidden relative">
+            <video 
+                src="buổi test gửi kiệt.webm" 
+                class="w-full h-full object-cover absolute top-0 left-0"
+                autoplay 
+                loop 
+                muted 
+                playsinline>
+            </video>
+        </div>
+        
+    </div>
+</section>
+
+        <!-- Feature Section 1 -->
+        <section class="mx-auto max-w-7xl mt-32 px-8">
+            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 items-center bg-bg-primary p-8 rounded-3xl shadow-lg border border-bg-tertiary">
+                <div class="w-full h-80 bg-gray-200 dark:bg-gray-800 rounded-xl flex justify-center items-center">
+                     <span class="text-gray-500">AI Plan Mockup</span>
+                </div>
+                <div class="relative p-8 w-full lg:px-12">
+                    <span class="inline-block bg-accent-indigo text-white text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4">AI powered</span>
+                    <h2 class="text-4xl font-bold leading-tight">Training that<br/><span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-purple-600">evolves with you</span></h2>
+                    <p class="text-base text-text-secondary mt-4">AI-powered training that adapts in real-time. VIKA analyzes your strength and fatigue to build your perfect next week—you lift, we do the science.</p>
+                    <button class="mt-6 px-6 py-3 bg-main-red text-white rounded-lg font-semibold">Try Adaptive Plan</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's New Section -->
+        <section class="mx-auto max-w-7xl mt-32 px-8">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold">What's New</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Blog card 1 -->
+                <div class="bg-bg-primary rounded-xl overflow-hidden shadow border border-bg-tertiary hover:-translate-y-1 transition duration-300">
+                    <div class="h-48 bg-gray-300 dark:bg-gray-700"></div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-bold mb-2">Adaptive Mesocycle Training</h4>
+                        <p class="text-sm text-text-secondary">Training shouldn't feel random. But it cũng shouldn't feel like following a rigid script...</p>
+                        <a href="#" class="inline-block mt-4 text-main-red font-semibold hover:underline">Read Article →</a>
+                    </div>
+                </div>
+                <!-- Blog card 2 -->
+                <div class="bg-bg-primary rounded-xl overflow-hidden shadow border border-bg-tertiary hover:-translate-y-1 transition duration-300">
+                    <div class="h-48 bg-gray-300 dark:bg-gray-700"></div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-bold mb-2">Free Weights vs. Machines</h4>
+                        <p class="text-sm text-text-secondary">New research reveals whether free weights vs machines build more muscle...</p>
+                        <a href="#" class="inline-block mt-4 text-main-red font-semibold hover:underline">Read Article →</a>
+                    </div>
+                </div>
+                <!-- Blog card 3 -->
+                <div class="bg-bg-primary rounded-xl overflow-hidden shadow border border-bg-tertiary hover:-translate-y-1 transition duration-300">
+                    <div class="h-48 bg-gray-300 dark:bg-gray-700"></div>
+                    <div class="p-6">
+                        <h4 class="text-lg font-bold mb-2">VIKA Year in Review 2025</h4>
+                        <p class="text-sm text-text-secondary">Happy New Year from VIKA! 🎉 Another year of training, growth, and consistency...</p>
+                        <a href="#" class="inline-block mt-4 text-main-red font-semibold hover:underline">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+<!-- Giao diện Thư viện bài tập (Ẩn mặc định) -->
+
+<section id="exercise-library-section" class="hidden min-h-screen pt-28 pb-12 bg-bg-secondary w-full">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        <!-- Header Thư viện -->
+        <div class="mb-10">
+            <button id="back-to-home-btn" class="flex items-center gap-2 text-text-secondary hover:text-main-red transition-colors font-medium mb-6 group">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Quay lại trang chủ
+            </button>
+            <h1 id="library-title" class="text-4xl lg:text-5xl font-bold text-text-primary mb-4">Thư viện bài tập</h1>
+            <p class="text-lg text-text-secondary" id="library-desc">Hàng trăm bài tập được hướng dẫn chi tiết bởi các chuyên gia.</p>
+        </div>
+
+        <!-- Khung chứa thanh Filter (Sẽ được JS tự động điền) -->
+        <div id="library-filters" class="flex flex-col lg:flex-row gap-4 items-center mb-10">
+            <!-- JS sẽ bơm nút Tất cả, Ngực, Lưng... vào đây -->
+        </div>
+
+        <!-- Khung chứa Lưới bài tập (Sẽ được JS tự động điền) -->
+        <div id="library-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+             <!-- JS sẽ bơm 100 bài tập vào đây -->
+        </div>
+        
+    </div>
+</section>
+
+    </div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#09090b] border-t border-gray-800 text-gray-400">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Product</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-main-red transition-colors">Elite Membership</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Coach</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Sign Up</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-main-red transition-colors">Workout Plans</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Exercise Database</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Community</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Legal</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-main-red transition-colors">Terms of Use</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Support</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-main-red transition-colors">About Us</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p>© 2026 VIKA Inc. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <span class="font-bold text-white hover:text-main-red transition-colors cursor-pointer">App Store</span>
+                <span class="font-bold text-white hover:text-main-red transition-colors cursor-pointer">Google Play</span>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Nhúng Javascript -->
+    <script src="script.js"></script>
+</body>
+</html>

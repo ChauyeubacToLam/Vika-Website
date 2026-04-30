@@ -2292,13 +2292,14 @@ window.filterPilates = (filterId) => {
 
 
 // 1. Cơ sở dữ liệu đòn đấm Boxing
+// Thay thế đoạn boxingDatabase cũ bằng đoạn này:
 const boxingDatabase = [
-    { id: 1, name: "Đấm thẳng trái", filter: "Đòn đấm thẳng", category: "Boxing", muscleGroup: "Vai, Tay trước", difficulty: "Dễ" },
-    { id: 2, name: "Đấm thẳng phải", filter: "Đòn đấm thẳng", category: "Boxing", muscleGroup: "Lưng, Hông, Tay sau", difficulty: "Trung bình" },
-    { id: 3, name: "Đòn Swing trái", filter: "Đòn móc ngang", category: "Boxing", muscleGroup: "Eo, Lườn", difficulty: "Khó" },
-    { id: 4, name: "Đòn Swing phải", filter: "Đòn móc ngang", category: "Boxing", muscleGroup: "Eo, Hông", difficulty: "Khó" },
-    { id: 5, name: "Đòn Xúc trái", filter: "Đòn móc ngược", category: "Boxing", muscleGroup: "Cơ bụng, Bắp tay", difficulty: "Trung bình" },
-    { id: 6, name: "Đòn Xúc phải", filter: "Đòn móc ngược", category: "Boxing", muscleGroup: "Toàn thân, Cơ lõi", difficulty: "Trung bình" }
+    { id: 1, name: "Đấm thẳng trái", filter: "straight", category: "Boxing", muscleGroup: "Vai, Tay trước", difficulty: "Dễ" },
+    { id: 2, name: "Đấm thẳng phải", filter: "straight", category: "Boxing", muscleGroup: "Lưng, Hông, Tay sau", difficulty: "Trung bình" },
+    { id: 3, name: "Đòn Swing trái", filter: "hook", category: "Boxing", muscleGroup: "Eo, Lườn", difficulty: "Khó" },
+    { id: 4, name: "Đòn Swing phải", filter: "hook", category: "Boxing", muscleGroup: "Eo, Hông", difficulty: "Khó" },
+    { id: 5, name: "Đòn Xúc trái", filter: "uppercut", category: "Boxing", muscleGroup: "Cơ bụng, Bắp tay", difficulty: "Trung bình" },
+    { id: 6, name: "Đòn Xúc phải", filter: "uppercut", category: "Boxing", muscleGroup: "Toàn thân, Cơ lõi", difficulty: "Trung bình" }
 ];
 
 

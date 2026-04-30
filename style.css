@@ -20,7 +20,7 @@ body {
 /* Định nghĩa biến màu sắc cho Dark Theme */
 html.dark {
     --bg-primary: #18181b;
-    --bg-secondary: #54565B; /* Đã điều chỉnh từ #54565B về màu tối sâu để đồng bộ với Header */
+    --bg-secondary: #54565B; 
     --bg-tertiary: #27272a;
     
     --text-primary: #ffffff;
@@ -49,6 +49,22 @@ html.dark {
     overflow: hidden;
 }
 
+/* Smooth Scrolling cho toàn trang */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tùy chỉnh hiệu ứng Dropdown Menu để mượt mà hơn */
+#nav-baitap-container:hover #dropdown-baitap {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#dropdown-baitap {
+    transform: translateY(10px);
+}
+
 /* Hiệu ứng gạch chân cho menu đang ở trang hiện tại */
 .nav-active {
     color: #ffb701 !important;
@@ -60,21 +76,17 @@ html.dark {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -6px;
+    bottom: -4px; /* Chỉnh lại khoảng cách gạch chân cho tinh tế hơn */
     width: 100%;
-    height: 3px;
+    height: 2px;
     background-color: #ffb701;
     border-radius: 2px;
-}
-
-/* Smooth Scrolling cho toàn trang */
-html {
-    scroll-behavior: smooth;
 }
 
 /* Hiệu ứng hover cho các card bài tập */
 #library-grid > div:hover {
     transform: translateY(-4px);
+} /* Đã fix lỗi thiếu dấu đóng ngoặc ở đây */
 
 /* Đảm bảo logo không bị dính đường gạch chân khi có class nav-active */
 #nav-logo.nav-active::after {
@@ -85,5 +97,4 @@ html {
     /* Nếu bạn chưa kịp xóa nền vàng, có thể dùng tạm filter này 
        để hòa trộn (tuy nhiên xóa nền thủ công vẫn là tốt nhất) */
     filter: drop-shadow(0 0 2px rgba(255, 183, 1, 0.2));
-}
 }

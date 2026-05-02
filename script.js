@@ -3,37 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const htmlElement = document.documentElement;
     const themeToggleBtn = document.getElementById('theme-toggle');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         htmlElement.classList.add('dark');
@@ -42,36 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
         htmlElement.classList.add('light');
         htmlElement.classList.remove('dark');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     if (themeToggleBtn) {
@@ -88,36 +27,62 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+// === SCROLL THUỘC TÍNH CHI TIẾT TÍNH NĂNG VÀ MÁY ĐIỆN THOẠI ===
+    const featureBlocks = document.querySelectorAll('.feature-text');
+    const phoneImagesArr = document.querySelectorAll('.phone-app-img');
 
+    if (featureBlocks.length > 0 && phoneImagesArr.length > 0) {
+        
+        const updatePhoneFeatureByScroll = () => {
+            // Đẩy vạch kích hoạt xuống 55% màn hình (giữa màn hình hướng xuống một chút) 
+            // Giúp khi text vừa vào tầm mắt là ảnh đã bắt đầu mờ ảo hiện ra
+            const targetLine = window.innerHeight * 0.55; 
+            
+            let activeIndex = 0;
+            let minDistance = 99999;
 
+            featureBlocks.forEach((block, index) => {
+                const rect = block.getBoundingClientRect();
+                // Lấy điểm đầu của block text thay vì điểm giữa để kích hoạt sớm hơn
+                const blockTopY = rect.top + (rect.height * 0.2); 
+                
+                const distance = Math.abs(targetLine - blockTopY);
+                if(distance < minDistance) {
+                    minDistance = distance;
+                    activeIndex = index;
+                }
+            });
 
+            // 1. CHẶN VÀ ĐỔI TRẠNG THÁI HIỂN THỊ CHỮ:
+            featureBlocks.forEach((block, index) => {
+                if(index === activeIndex) {
+                    block.classList.add('is-active', 'ml-0', 'lg:ml-6');
+                } else {
+                    block.classList.remove('is-active', 'ml-0', 'lg:ml-6');
+                }
+            });
 
+            // 2. KÍCH HOẠT ĐỔI HÌNH TRÊN ĐIỆN THOẠI (HIỆU ỨNG CROSS-FADE LỜ MỜ)
+            phoneImagesArr.forEach(img => {
+                const imgIdx = parseInt(img.getAttribute('data-img-index'));
+                if(imgIdx === activeIndex) {
+                    // Ảnh active: Hiện rõ, to lên kích thước chuẩn
+                    img.classList.remove('opacity-0', 'scale-105', 'z-10');
+                    img.classList.add('opacity-100', 'scale-100', 'z-20');
+                } else {
+                    // Ảnh cũ/khác: Mờ đi, zoom nhẹ ra sau
+                    img.classList.remove('opacity-100', 'scale-100', 'z-20');
+                    img.classList.add('opacity-0', 'scale-105', 'z-10');
+                }
+            });
+        };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        window.addEventListener('scroll', updatePhoneFeatureByScroll);
+        window.addEventListener('resize', updatePhoneFeatureByScroll);
+        
+        // Gọi ngay 1 lần để set ảnh đầu tiên lúc vừa load web (khắc phục lỗi đen màn)
+        setTimeout(updatePhoneFeatureByScroll, 50); 
+    }
 
     // === 2. XỬ LÝ GỬI EMAIL ĐĂNG KÝ (Đã cập nhật 2 URL) ===
     const emailForm = document.getElementById('email-form');

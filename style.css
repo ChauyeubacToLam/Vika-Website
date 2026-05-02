@@ -97,4 +97,100 @@ html {
     /* Nếu bạn chưa kịp xóa nền vàng, có thể dùng tạm filter này 
        để hòa trộn (tuy nhiên xóa nền thủ công vẫn là tốt nhất) */
     filter: drop-shadow(0 0 2px rgba(255, 183, 1, 0.2));
+
+
+/* -- CUSTOM HIỆU ỨNG TÍNH NĂNG ĐIỆN THOẠI TRƯỢT STICKY -- */
+.feature-text {
+    transform: translateY(20px); 
+    opacity: 0.15;
+}
+
+.feature-text.is-active {
+    opacity: 1;
+    transform: translateY(0);
+}
+.feature-text.is-active h4 {
+    background: linear-gradient(to right, #ffb701, #fa7e1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+html.light .feature-text.is-active h4 {
+    background: linear-gradient(to right, #111, #4C419F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Fix mobile viewport display issue: */
+@media screen and (max-width: 1024px) {
+    /* Màn hình điện thoại thực tế bên dưới mờ dần nếu bị đè Text, nhường UI trên Mobile */
+    .phone-feature-frame {
+        pointer-events: none;
+    }
+}
+
+/* -- CUSTOM HIỆU ỨNG TÍNH NĂNG ĐIỆN THOẠI TRƯỢT STICKY -- */
+.feature-text {
+    transform: translateY(20px); 
+    opacity: 0.35; /* Không active: Tăng độ hiển thị lên đủ thấy được chứ không mù tịch nữa */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.feature-text.is-active {
+    opacity: 1; /* Lúc trượt trúng mục, Sáng rõ rực rỡ bừng lên */
+    transform: translateY(0);
+}
+
+.feature-text h4 {
+    transition: color 0.4s ease;
+}
+
+/* Trong GIAO DIỆN TỐI (DARK MODE) -> H4 dùng chữ chuyển màu (Gradient) */
+html.dark .feature-text.is-active h4 {
+    background: linear-gradient(to right, #ffb701, #fa7e1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Trong GIAO DIỆN SÁNG (LIGHT MODE) -> Bắt H4 buộc dùng Đen Đậm tuyền để nổi, Dễ chịu cho Mắt, Sang Trọng. */
+html.light .feature-text.is-active h4, 
+html:not(.dark) .feature-text.is-active h4 {
+    background: none !important;
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+}
+
+/* -- CUSTOM HIỆU ỨNG TÍNH NĂNG ĐIỆN THOẠI TRƯỢT STICKY CHUẨN VIBE MỜ ẢO -- */
+.feature-text {
+    opacity: 0.1 !important; /* Cho mờ tịt gần như tàng hình */
+    transform: scale(0.95) translateY(20px); /* Thu nhỏ nhẹ và đẩy xuống dưới */
+    filter: blur(2px); /* Thêm hiệu ứng nhòe (blur) cho text không active */
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none; /* Chặn click khi đang mờ */
+}
+
+.feature-text.is-active {
+    opacity: 1 !important; /* Sáng rõ rực rỡ */
+    transform: scale(1) translateY(0); /* Bật to lên kích thước thật */
+    filter: blur(0); /* Nét căng */
+    pointer-events: auto;
+}
+
+.feature-text h4 {
+    transition: all 0.5s ease;
+}
+
+html.dark .feature-text.is-active h4 {
+    background: linear-gradient(to right, #ffb701, #fa7e1e) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+html.light .feature-text.is-active h4, 
+html:not(.dark) .feature-text.is-active h4 {
+    background: none !important;
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+}
+
+
 }

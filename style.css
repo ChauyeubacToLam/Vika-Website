@@ -159,38 +159,34 @@ html:not(.dark) .feature-text.is-active h4 {
     -webkit-text-fill-color: #111111 !important;
 }
 
-/* -- CUSTOM HIỆU ỨNG TÍNH NĂNG ĐIỆN THOẠI TRƯỢT STICKY CHUẨN VIBE MỜ ẢO -- */
+/* -- HIỆU ỨNG STICKY SCROLL CHUẨN FITIFY (CLEAN & SMOOTH) -- */
 .feature-text {
-    opacity: 0.1 !important; /* Cho mờ tịt gần như tàng hình */
-    transform: scale(0.95) translateY(20px); /* Thu nhỏ nhẹ và đẩy xuống dưới */
-    filter: blur(2px); /* Thêm hiệu ứng nhòe (blur) cho text không active */
-    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none; /* Chặn click khi đang mờ */
+    opacity: 0.3 !important; /* Không quá mờ, giữ lại độ nét của chữ */
+    transform: translateY(25px); /* Trượt nhẹ từ dưới lên */
+    transition: opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .feature-text.is-active {
-    opacity: 1 !important; /* Sáng rõ rực rỡ */
-    transform: scale(1) translateY(0); /* Bật to lên kích thước thật */
-    filter: blur(0); /* Nét căng */
-    pointer-events: auto;
+    opacity: 1 !important; 
+    transform: translateY(0);
 }
 
 .feature-text h4 {
-    transition: all 0.5s ease;
+    transition: color 0.4s ease;
 }
 
+/* Chữ nổi bật trên nền Tối */
 html.dark .feature-text.is-active h4 {
-    background: linear-gradient(to right, #ffb701, #fa7e1e) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
+    background: linear-gradient(to right, #ffb701, #fa7e1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+/* Chữ nổi bật trên nền Sáng */
 html.light .feature-text.is-active h4, 
 html:not(.dark) .feature-text.is-active h4 {
     background: none !important;
     color: #111111 !important;
     -webkit-text-fill-color: #111111 !important;
 }
-
-
 }

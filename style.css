@@ -76,7 +76,7 @@ html {
     content: '';
     position: absolute;
     left: 0;
-    bottom: -4px; /* Chỉnh lại khoảng cách gạch chân cho tinh tế hơn */
+    bottom: -4px;
     width: 100%;
     height: 2px;
     background-color: #ffb701;
@@ -86,7 +86,7 @@ html {
 /* Hiệu ứng hover cho các card bài tập */
 #library-grid > div:hover {
     transform: translateY(-4px);
-} /* Đã fix lỗi thiếu dấu đóng ngoặc ở đây */
+}
 
 /* Đảm bảo logo không bị dính đường gạch chân khi có class nav-active */
 #nav-logo.nav-active::after {
@@ -94,69 +94,15 @@ html {
 }
 
 #nav-logo img {
-    /* Nếu bạn chưa kịp xóa nền vàng, có thể dùng tạm filter này 
-       để hòa trộn (tuy nhiên xóa nền thủ công vẫn là tốt nhất) */
+    /* MÌNH ĐÃ THÊM DẤU } XUỐNG DƯỚI ĐỂ FIX LỖI BREAK TOÀN BỘ FILE NHÉ */
     filter: drop-shadow(0 0 2px rgba(255, 183, 1, 0.2));
-
-
-/* -- CUSTOM HIỆU ỨNG TÍNH NĂNG ĐIỆN THOẠI TRƯỢT STICKY -- */
-.feature-text {
-    transform: translateY(20px); 
-    opacity: 0.15;
-}
-
-.feature-text.is-active {
-    opacity: 1;
-    transform: translateY(0);
-}
-.feature-text.is-active h4 {
-    background: linear-gradient(to right, #ffb701, #fa7e1e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-html.light .feature-text.is-active h4 {
-    background: linear-gradient(to right, #111, #4C419F);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+} 
 
 /* Fix mobile viewport display issue: */
 @media screen and (max-width: 1024px) {
-    /* Màn hình điện thoại thực tế bên dưới mờ dần nếu bị đè Text, nhường UI trên Mobile */
     .phone-feature-frame {
         pointer-events: none;
     }
-}
-
-/* -- CUSTOM HIỆU ỨNG TÍNH NĂNG ĐIỆN THOẠI TRƯỢT STICKY -- */
-.feature-text {
-    transform: translateY(20px); 
-    opacity: 0.35; /* Không active: Tăng độ hiển thị lên đủ thấy được chứ không mù tịch nữa */
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.feature-text.is-active {
-    opacity: 1; /* Lúc trượt trúng mục, Sáng rõ rực rỡ bừng lên */
-    transform: translateY(0);
-}
-
-.feature-text h4 {
-    transition: color 0.4s ease;
-}
-
-/* Trong GIAO DIỆN TỐI (DARK MODE) -> H4 dùng chữ chuyển màu (Gradient) */
-html.dark .feature-text.is-active h4 {
-    background: linear-gradient(to right, #ffb701, #fa7e1e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Trong GIAO DIỆN SÁNG (LIGHT MODE) -> Bắt H4 buộc dùng Đen Đậm tuyền để nổi, Dễ chịu cho Mắt, Sang Trọng. */
-html.light .feature-text.is-active h4, 
-html:not(.dark) .feature-text.is-active h4 {
-    background: none !important;
-    color: #111111 !important;
-    -webkit-text-fill-color: #111111 !important;
 }
 
 /* -- HIỆU ỨNG STICKY SCROLL CHUẨN FITIFY (CLEAN & SMOOTH) -- */
@@ -188,5 +134,4 @@ html:not(.dark) .feature-text.is-active h4 {
     background: none !important;
     color: #111111 !important;
     -webkit-text-fill-color: #111111 !important;
-}
 }

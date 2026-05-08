@@ -134,4 +134,63 @@ html:not(.dark) .feature-text.is-active h4 {
     background: none !important;
     color: #111111 !important;
     -webkit-text-fill-color: #111111 !important;
+
+/* --- CHUYÊN BIỆT CHO ĐIỆN THOẠI (Max-width 768px) --- */
+@media screen and (max-width: 768px) {
+    /* 1. Tách form email xếp tầng đứng để to, dễ gõ trên bàn phím ảo */
+    #email-form {
+        flex-direction: column;
+        border-radius: 1.5rem;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        gap: 12px; /* Khoảng cách giữa ô input và nút */
+    }
+    
+    #email-form input {
+        width: 100%;
+        border-radius: 999px !important;
+        background-color: var(--bg-primary);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Đưa chữ ra giữa khi gõ bằng đth */
+        border: 1px solid rgba(150, 150, 150, 0.3);
+    }
+    
+    #email-form button {
+        width: 100%; /* Kéo dài nút tràn viền đth */
+        justify-content: center;
+        border-radius: 999px !important;
+    }
+}
+
+@media screen and (max-width: 1023px) { /* Cho Mobile/Ipad cỡ trung */
+    /* Không gian cho cụm text cuộn lúc này cần thoáng và rõ các khung "bài (card)"*/
+    #scroll-texts-container {
+        padding-top: 2rem !important; 
+        padding-bottom: 2rem !important;
+    }
+    
+    .feature-text {
+        opacity: 1 !important;     /* Trên điện thoại, tắt tính năng scroll ảo, để Text SÁNG BỪNG NGAY! */
+        transform: none !important;
+        min-height: auto !important; /* Dọn đống đệm height cao ở Desktop đi*/
+        margin-bottom: 1.5rem;       /* Đổi padding lớn thành cách biên khoảng nghỉ mềm*/
+        
+        /* Cấu hình thêm Box đẹp dạng bài đăng UI để điện thoại dễ tương tác lướt ngón cái: */
+        padding: 1.5rem !important;
+        border-radius: 1.5rem;
+        background: var(--bg-primary);
+        border: 1px solid var(--bg-tertiary);
+        box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    html.dark .feature-text {
+        background: #1c1c1e !important;
+        border: 1px solid rgba(255,255,255,0.05) !important;
+    }
+
+    .feature-text.is-active {
+        box-shadow: 0 0 0 2px #ffb701; /* Text vẫn highlight khi chạm vùng 55% màn Mobile để người lướt thích mắt */
+    }
+}
 }

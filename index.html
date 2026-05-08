@@ -39,7 +39,7 @@
             <!-- Logo -->
             <div class="flex items-center gap-x-12">
                 <a href="#" id="nav-logo" class="flex items-center transition-transform hover:scale-105">
-                    <img src="logo.png" alt="VIKA Logo" class="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 dark:invert-0 invert" />
+                    <img src="logo 3.png" alt="VIKA Logo" class="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 dark:invert-0 invert" />
                 </a>
 
                 <!-- Menu Navigation -->
@@ -91,14 +91,19 @@
     <!-- ================= MAIN CONTENT (Bao bọc tất cả nội dung trang chủ để JS có thể ẩn đi) ================= -->
     <main class="w-full">
         
-        <!-- HERO SECTION -->
-        <section class="relative w-full min-h-screen pt-32 pb-20 flex items-center bg-gray-50 dark:bg-[#121214] transition-colors duration-300 overflow-hidden">
-            <div class="absolute top-[0%] left-[-10%] w-[600px] h-[600px] bg-main-red/5 dark:bg-main-red/15 blur-[120px] rounded-full pointer-events-none transition-all"></div>
-            <div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-main-red/5 dark:bg-main-red/10 blur-[100px] rounded-full pointer-events-none transition-all"></div>
+<section class="relative w-full min-h-screen pt-28 pb-10 flex items-center bg-gray-50 dark:bg-[#121214] transition-colors duration-300 overflow-hidden">
+            
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&w=2000&q=80" alt="Workout Background" class="w-full h-full object-cover object-center" />
+                
+                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent dark:from-[#121214] dark:via-[#121214]/80 dark:to-transparent transition-colors duration-300"></div>
+            </div>
+
+            <div class="absolute top-[0%] left-[-10%] w-[600px] h-[600px] bg-main-red/5 dark:bg-main-red/15 blur-[120px] rounded-full pointer-events-none transition-all z-0"></div>
+            <div class="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] bg-main-red/5 dark:bg-main-red/10 blur-[100px] rounded-full pointer-events-none transition-all z-0"></div>
 
             <div class="mx-auto w-full max-w-[1400px] px-6 lg:px-12 flex flex-col lg:flex-row items-center gap-16 lg:gap-8 relative z-10">
                 
-                <!-- Nửa trái: Slogan & Form -->
                 <div class="w-full lg:w-1/2 flex flex-col justify-center text-left">
                     <h1 class="text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem] font-black italic leading-[1.2] tracking-tighter uppercase mb-4 drop-shadow-md transition-colors py-2">
                         <span class="text-gray-900 dark:text-white">VIKA - </span>
@@ -107,7 +112,7 @@
                         </span>
                     </h1>
                     
-                    <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-medium leading-relaxed max-w-[450px] mb-8 transition-colors">
+                    <p class="text-sm sm:text-base text-gray-800 dark:text-gray-300 font-medium leading-relaxed max-w-[450px] mb-8 transition-colors">
                         VIKA sử dụng công nghệ AI phục vụ đời sống thể thao cho người Việt Nam
                     </p>
 
@@ -119,7 +124,7 @@
 
                         <div class="flex items-center gap-4 my-8">
                             <div class="h-px bg-gray-300 dark:bg-gray-700 flex-1 transition-colors"></div>
-                            <span class="text-gray-500 dark:text-gray-400 text-sm font-medium transition-colors">Social login</span>
+                            <span class="text-gray-600 dark:text-gray-400 text-sm font-medium transition-colors">Social login</span>
                             <div class="h-px bg-gray-300 dark:bg-gray-700 flex-1 transition-colors"></div>
                         </div>
 
@@ -136,49 +141,34 @@
                     </div>
                 </div>
 
-                <!-- Nửa phải: Visuals -->
-                <div class="w-full lg:w-1/2 relative mt-16 lg:mt-0 flex justify-center lg:justify-end pr-4 lg:pr-12">
-                    <div class="w-full max-w-[500px] h-[450px] sm:h-[550px] relative rounded-3xl overflow-hidden border border-gray-200 dark:border-white/10 shadow-xl bg-gray-200 dark:bg-gray-800 transition-colors">
-                        <img src="Ảnh bìa 1.avif" alt="Workout Background" class="absolute inset-0 w-full h-full object-cover brightness-90 dark:brightness-75" />
+                <div class="w-full lg:w-1/2 mt-10 lg:mt-0 flex justify-center items-center">
+                    
+                    <div class="relative z-20 w-[220px] sm:w-[240px] lg:w-[250px] xl:w-[270px] aspect-[1/2.15] rounded-[36px] sm:rounded-[40px] border-[6px] sm:border-[8px] border-gray-900 dark:border-[#1c1c1e] overflow-hidden shadow-[0_0_60px_20px_rgba(255,183,1,0.25)] dark:shadow-[0_0_80px_25px_rgba(255,183,1,0.4)] transition-all"
+                         style="background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #111 100%);">
+                        
+                        <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-[35%] h-[20px] bg-black rounded-full z-30 flex items-center justify-center gap-1">
+                            <div class="w-1.5 h-1.5 rounded-full bg-gray-800"></div>
+                        </div>
+
+                        <div class="absolute right-[-8px] top-[25%] w-[4px] h-12 bg-gray-600 rounded-r-full z-30"></div>
+                        <div class="absolute left-[-8px] top-[18%] w-[4px] h-6 bg-gray-600 rounded-l-full z-30"></div>
+                        <div class="absolute left-[-8px] top-[28%] w-[4px] h-6 bg-gray-600 rounded-l-full z-30"></div>
+
+                        <video src="buoi-test.webm" class="w-full h-full object-cover opacity-95" autoplay loop muted playsinline></video>
+
+                        <div class="absolute inset-0 z-30 pointer-events-none"
+                             style="background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);">
+                        </div>
+
+                        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-40 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-main-red/90 rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer">
+                                <svg class="w-4 h-4 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="absolute inset-0 border-[2px] border-white/10 rounded-[28px] sm:rounded-[32px] pointer-events-none z-20"></div>
                     </div>
 
-<!-- dòng 145 - THAY TỪ ĐÂY -->
-<div class="absolute right-0 sm:right-[-20px] lg:right-[-40px] top-[10%] lg:top-[5%] z-20 w-[240px] sm:w-[280px] h-[480px] sm:h-[560px] rounded-[40px] sm:rounded-[48px] border-[6px] sm:border-[8px] border-gray-800 dark:border-[#1c1c1e] overflow-hidden shadow-[0_0_60px_20px_rgba(255,183,1,0.25)] dark:shadow-[0_0_80px_25px_rgba(255,183,1,0.4)] transition-all"
-     style="background: linear-gradient(145deg, #2a2a2a 0%, #1a1a1a 50%, #111 100%);">
-    
-    <!-- Dynamic Island -->
-    <div class="absolute top-3 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-black rounded-full z-30 flex items-center justify-center gap-2">
-        <div class="w-2 h-2 rounded-full bg-gray-700"></div>
-        <div class="w-3 h-3 rounded-full bg-gray-800 border border-gray-600"></div>
-    </div>
-
-    <!-- Nút nguồn bên phải -->
-    <div class="absolute right-[-10px] top-[25%] w-[5px] h-14 bg-gray-600 rounded-r-full z-30"></div>
-    <!-- Nút âm lượng bên trái -->
-    <div class="absolute left-[-10px] top-[18%] w-[5px] h-8 bg-gray-600 rounded-l-full z-30"></div>
-    <div class="absolute left-[-10px] top-[28%] w-[5px] h-8 bg-gray-600 rounded-l-full z-30"></div>
-
-    <!-- Video -->
-    <video src="buoi-test.webm" class="w-full h-full object-cover opacity-95" autoplay loop muted playsinline></video>
-
-    <!-- Gradient dưới -->
-    <div class="absolute inset-0 z-30 pointer-events-none"
-         style="background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%);">
-    </div>
-
-    <!-- Nút play -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40 flex items-center gap-3">
-        <div class="w-12 h-12 bg-main-red/90 rounded-full flex items-center justify-center shadow-lg">
-            <svg class="w-5 h-5 text-black ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-    </div>
-
-    <!-- Viền trong -->
-    <div class="absolute inset-0 rounded-[34px] sm:rounded-[42px] pointer-events-none z-20"
-         style="box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);"></div>
-</div>
-<!-- đến đây -- dòng 152 cũ -->
-                    </div>
                 </div>
             </div>
         </section>
@@ -304,32 +294,29 @@
     </div>
 </section>
         <!-- What's New Section -->
-        <section class="mx-auto max-w-7xl mt-20 mb-20 px-8">
+<section class="mx-auto max-w-7xl mt-20 mb-20 px-8">
             <div class="text-center mb-12">
                 <h3 class="text-3xl font-bold">What's New</h3>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Blog card 1 -->
                 <div class="bg-bg-primary rounded-xl overflow-hidden shadow border border-bg-tertiary hover:-translate-y-1 transition duration-300">
-                    <div class="h-48 bg-gray-300 dark:bg-gray-700"></div>
+                    <img src="[https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&h=500&q=80](https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=800&h=500&q=80)" alt="Adaptive Training" class="w-full h-48 object-cover" />
                     <div class="p-6">
                         <h4 class="text-lg font-bold mb-2">Adaptive Mesocycle Training</h4>
                         <p class="text-sm text-text-secondary">Training shouldn't feel random. But it cũng shouldn't feel like following a rigid script...</p>
                         <a href="#" class="inline-block mt-4 text-main-red font-semibold hover:underline">Read Article →</a>
                     </div>
                 </div>
-                <!-- Blog card 2 -->
                 <div class="bg-bg-primary rounded-xl overflow-hidden shadow border border-bg-tertiary hover:-translate-y-1 transition duration-300">
-                    <div class="h-48 bg-gray-300 dark:bg-gray-700"></div>
+                    <img src="[https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&h=500&q=80](https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&h=500&q=80)" alt="Free Weights" class="w-full h-48 object-cover" />
                     <div class="p-6">
                         <h4 class="text-lg font-bold mb-2">Free Weights vs. Machines</h4>
                         <p class="text-sm text-text-secondary">New research reveals whether free weights vs machines build more muscle...</p>
                         <a href="#" class="inline-block mt-4 text-main-red font-semibold hover:underline">Read Article →</a>
                     </div>
                 </div>
-                <!-- Blog card 3 -->
                 <div class="bg-bg-primary rounded-xl overflow-hidden shadow border border-bg-tertiary hover:-translate-y-1 transition duration-300">
-                    <div class="h-48 bg-gray-300 dark:bg-gray-700"></div>
+                    <img src="[https://images.unsplash.com/photo-1552674605-15c21f3cbce4?auto=format&fit=crop&w=800&h=500&q=80](https://images.unsplash.com/photo-1552674605-15c21f3cbce4?auto=format&fit=crop&w=800&h=500&q=80)" alt="Year in Review" class="w-full h-48 object-cover" />
                     <div class="p-6">
                         <h4 class="text-lg font-bold mb-2">VIKA Year in Review 2025</h4>
                         <p class="text-sm text-text-secondary">Happy New Year from VIKA! 🎉 Another year of training, growth, and consistency...</p>

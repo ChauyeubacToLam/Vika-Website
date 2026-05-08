@@ -1870,35 +1870,6 @@ const showHomeView = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         if (filterId === 'all') {
             renderGrid(yogaDatabase);
         } else {
@@ -2231,20 +2202,6 @@ window.filterPilates = (filterId) => {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     if (filterId === 'all') {
         renderGrid(pilatesDatabase);
     } else {
@@ -2252,8 +2209,6 @@ window.filterPilates = (filterId) => {
         renderGrid(filteredData);
     }
 };
-
-
 
 
 // 1. Cơ sở dữ liệu đòn đấm Boxing
@@ -2324,24 +2279,6 @@ window.filterBoxing = (filterId) => {
         renderGrid(filteredData);
     }
 };
-// === MỞ RỘNG UX ĐIỆN THOẠI (Hamburger Mobile) ===
-const hamburger = document.getElementById('mobile-hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-
-if(hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        mobileMenu.classList.toggle('flex');
-    });
-
-    // Vuốt hoặc Bấm trúng link bên trong là lập tức ẩn thanh thả đó đi để trả lại View Web
-    document.querySelectorAll('.mobile-tap').forEach(btn => {
-        btn.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-        });
-    });
-}
 });
 
 

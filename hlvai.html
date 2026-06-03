@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về chúng tôi - VIKA Fitness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-[#09090b] text-white min-h-screen flex flex-col">
+
+    <!-- HEADER (Giữ nguyên như trang chủ) -->
+    <header class="fixed w-full top-0 z-50 bg-[#09090b]/90 backdrop-blur-sm border-b border-zinc-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-12">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <!-- Chỗ này là Logo VIKA của bạn -->
+                        <span class="text-[#ffb701] font-bold text-2xl italic">V</span>
+                        <span class="text-xs font-bold tracking-widest mt-1">VIKA</span>
+                    </a>
+                    <nav class="hidden md:flex gap-8 text-sm font-medium">
+                        <a href="index.html" class="hover:text-[#ffb701] transition-colors">Trang chủ</a>
+                        <a href="baitap.html" class="hover:text-[#ffb701] transition-colors">Bài tập</a>
+                        <a href="thuthach.html" class="hover:text-[#ffb701] transition-colors">Thử thách</a>
+                    </nav>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="dangnhap.html" class="text-sm font-medium hover:text-[#ffb701] transition-colors">Đăng nhập</a>
+                    <a href="dangky.html" class="bg-[#ffb701] text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-400 transition-colors">Đăng ký miễn phí</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   <!-- NỘI DUNG TRANG HUẤN LUYỆN VIÊN AI -->
+    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20 w-full text-center">
+        <span class="px-4 py-1.5 rounded-full bg-zinc-800 text-[#ffb701] text-sm font-bold tracking-wide mb-6 inline-block">CÔNG NGHỆ ĐỘT PHÁ</span>
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 text-white">Huấn Luyện Viên AI Của Riêng Bạn</h1>
+        <p class="text-xl text-zinc-400 max-w-3xl mx-auto mb-12">Công nghệ Computer Vision quét và phân tích từng chuyển động của cơ thể qua camera điện thoại, đưa ra cảnh báo sai form ngay lập tức.</p>
+        
+        <!-- Khối tính năng -->
+        <div class="grid md:grid-cols-3 gap-6 text-left mt-10">
+            <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
+                <div class="text-[#ffb701] text-3xl mb-4">📷</div>
+                <h3 class="text-white font-bold text-lg mb-2">Nhận diện Real-time</h3>
+                <p class="text-zinc-400 text-sm">Phân tích góc khớp xương 30 khung hình/giây.</p>
+            </div>
+            <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
+                <div class="text-[#ffb701] text-3xl mb-4">🗣️</div>
+                <h3 class="text-white font-bold text-lg mb-2">Nhắc nhở bằng giọng nói</h3>
+                <p class="text-zinc-400 text-sm">"Hạ mông xuống một chút", "Thẳng lưng lên" y như HLV thật.</p>
+            </div>
+            <div class="bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800">
+                <div class="text-[#ffb701] text-3xl mb-4">📊</div>
+                <h3 class="text-white font-bold text-lg mb-2">Báo cáo chi tiết</h3>
+                <p class="text-zinc-400 text-sm">Chấm điểm độ chính xác sau mỗi set tập.</p>
+            </div>
+        </div>
+    </main>
+
+<!-- FOOTER (Đã cập nhật link chuẩn theo danh sách) -->
+    <footer class="border-t border-zinc-800 bg-[#09090b] pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Cột 1 -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Dịch vụ</h3>
+                    <ul class="space-y-4 text-zinc-400 text-sm">
+                        <li><a href="baitap.html" class="hover:text-[#ffb701] transition-colors">Bài tập</a></li>
+                        <li><a href="hlvai.html" class="hover:text-[#ffb701] transition-colors">Huấn luyện viên AI</a></li>
+                        <li><a href="tvelite.html" class="hover:text-[#ffb701] transition-colors">Thành viên Elite</a></li>
+                        <li><a href="goitapluyen.html" class="hover:text-[#ffb701] transition-colors">Gói tập luyện</a></li>
+                        <li><a href="taiungdung.html" class="hover:text-[#ffb701] transition-colors">Tải ứng dụng</a></li>
+                    </ul>
+                </div>
+                <!-- Cột 2 -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Tài nguyên</h3>
+                    <ul class="space-y-4 text-zinc-400 text-sm">
+                        <li><a href="blog.html" class="hover:text-[#ffb701] transition-colors">Blog fitness</a></li>
+                        <li><a href="congdong.html" class="hover:text-[#ffb701] transition-colors">Cộng đồng</a></li>
+                        <li><a href="tintuc.html" class="hover:text-[#ffb701] transition-colors">Tin tức</a></li>
+                        <li><a href="FAQ.html" class="hover:text-[#ffb701] transition-colors">FAQ</a></li>
+                        <li><a href="lotrinhtapluyen.html" class="hover:text-[#ffb701] transition-colors">Lộ trình tập luyện</a></li>
+                    </ul>
+                </div>
+                <!-- Cột 3 -->
+                <div>
+                    <h3 class="text-white font-bold text-lg mb-6">Thông tin</h3>
+                    <ul class="space-y-4 text-zinc-400 text-sm">
+                        <li><a href="vechungtoi.html" class="hover:text-[#ffb701] transition-colors">Về chúng tôi</a></li>
+                        <li><a href="dieu-khoan.html" class="hover:text-[#ffb701] transition-colors">Điều khoản sử dụng</a></li>
+                        <li><a href="chinhsach.html" class="hover:text-[#ffb701] transition-colors">Chính sách quyền riêng tư</a></li>
+                        <li><a href="lienhe.html" class="hover:text-[#ffb701] transition-colors">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+

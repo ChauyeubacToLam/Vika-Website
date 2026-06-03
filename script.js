@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const htmlElement = document.documentElement;
     const themeToggleBtn = document.getElementById('theme-toggle');
 
+
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
         htmlElement.classList.add('dark');
@@ -11,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
         htmlElement.classList.add('light');
         htmlElement.classList.remove('dark');
     }
+
+
 
 
     if (themeToggleBtn) {
@@ -27,67 +30,183 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-// === SCROLL THUỘC TÍNH CHI TIẾT TÍNH NĂNG VÀ MÁY ĐIỆN THOẠI ===
-    const featureBlocks = document.querySelectorAll('.feature-text');
-    const phoneImagesArr = document.querySelectorAll('.phone-app-img');
 
-    if (featureBlocks.length > 0 && phoneImagesArr.length > 0) {
-        
-        const updatePhoneFeatureByScroll = () => {
-            // Đẩy vạch kích hoạt xuống 55% màn hình (giữa màn hình hướng xuống một chút) 
-            // Giúp khi text vừa vào tầm mắt là ảnh đã bắt đầu mờ ảo hiện ra
-            const targetLine = window.innerHeight * 0.55; 
-            
-            let activeIndex = 0;
-            let minDistance = 99999;
+// 1. Khai báo biến toàn cục
+let currentSlide = 0;
+let slideInterval;
 
-            featureBlocks.forEach((block, index) => {
-                const rect = block.getBoundingClientRect();
-                // Lấy điểm đầu của block text thay vì điểm giữa để kích hoạt sớm hơn
-                const blockTopY = rect.top + (rect.height * 0.2); 
-                
-                const distance = Math.abs(targetLine - blockTopY);
-                if(distance < minDistance) {
-                    minDistance = distance;
-                    activeIndex = index;
+
+// 2. Hàm cập nhật Slider (Di chuyển ảnh và đổi màu chấm)
+function updateSlider() {
+    const slider = document.getElementById('banner-slider');
+    const dots = document.querySelectorAll('.banner-dot');
+   
+    if (!slider) return;
+
+
+    // Di chuyển slide
+    slider.style.transform = `translateX(-${currentSlide * 25}%)`;
+
+
+    // Cập nhật màu chấm tròn (Chấm đang chọn thì trắng rõ, còn lại thì mờ)
+    dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+            dot.classList.remove('bg-white/50');
+            dot.classList.add('bg-white');
+        } else {
+            dot.classList.remove('bg-white');
+            dot.classList.add('bg-white/50');
+        }
+    });
+}
+
+
+// 3. Hàm xử lý khi bấm vào chấm tròn (Quan trọng nhất)
+window.goToSlide = function(index) {
+    currentSlide = index;
+    updateSlider();
+    resetAutoSlide(); // Bấm vào thì reset lại thời gian chờ để không bị nhảy slide ngay lập tức
+};
+
+
+// 4. Hàm tự động chạy
+function startAutoSlide() {
+    slideInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % 4;
+        updateSlider();
+    }, 3000); // 3 giây đổi một lần
+}
+
+
+function resetAutoSlide() {
+    clearInterval(slideInterval);
+    startAutoSlide();
+}
+
+
+// 5. Kích hoạt khi trang web tải xong
+document.addEventListener('DOMContentLoaded', () => {
+    updateSlider();
+    startAutoSlide();
+});
+
+
+// === SCROLL TỰ ĐỘNG ĐỔI MÀU CHỮ SÁNG LÊN VÀ ĐỔI ẢNH ĐIỆN THOẠI ===
+const exerciseBlocks = document.querySelectorAll('.exercise-scroll-item');
+const interactivePhone = document.getElementById('interactive-phone-screen');
+
+
+if (exerciseBlocks.length > 0 && interactivePhone) {
+   
+    const updateExerciseLayoutByScroll = () => {
+        // Cắt vạch kích hoạt chính xác tại vị trí 50% (giữa màn hình) giống hệt video mẫu
+        const targetActivationLine = window.innerHeight * 0.50;
+       
+        let targetActiveIndex = 0;
+        let minimumDistanceValue = 99999;
+
+
+        // Tính khoảng cách xem phần nào đang nằm trúng vùng tâm màn hình nhất
+        exerciseBlocks.forEach((block, index) => {
+            const blockRect = block.getBoundingClientRect();
+            const blockCenterY = blockRect.top + (blockRect.height * 0.5);
+           
+            const currentDistance = Math.abs(targetActivationLine - blockCenterY);
+            if(currentDistance < minimumDistanceValue) {
+                minimumDistanceValue = currentDistance;
+                targetActiveIndex = index;
+            }
+        });
+
+
+        // 1. ĐIỀU PHỐI HIỆU ỨNG CHỮ: Sáng bừng (opacity-100), đổi màu chữ mô tả và nhích sang phải (ml-6)
+        exerciseBlocks.forEach((block, index) => {
+            const h3Title = block.querySelector('h3');
+            const pDescription = block.querySelector('p');
+
+
+            if(index === targetActiveIndex) {
+                // Khi active: Làm sáng chữ, đổi mô tả sang màu trắng tinh, tịnh tiến lề trái ra xa
+                block.classList.remove('opacity-30', 'ml-0');
+                block.classList.add('opacity-100', 'ml-0', 'lg:ml-6');
+               
+                if (pDescription) {
+                    pDescription.classList.remove('text-zinc-400');
+                    pDescription.classList.add('text-white', 'font-normal');
                 }
-            });
-
-            // 1. CHẶN VÀ ĐỔI TRẠNG THÁI HIỂN THỊ CHỮ:
-            featureBlocks.forEach((block, index) => {
-                if(index === activeIndex) {
-                    block.classList.add('is-active', 'ml-0', 'lg:ml-6');
-                } else {
-                    block.classList.remove('is-active', 'ml-0', 'lg:ml-6');
+            } else {
+                // Khi không active: Trở về trạng thái mờ lờ mờ (opacity-30) và lùi lề về ban đầu
+                block.classList.remove('opacity-100', 'ml-0', 'lg:ml-6');
+                block.classList.add('opacity-30', 'ml-0');
+               
+                if (pDescription) {
+                    pDescription.classList.remove('text-white', 'font-normal');
+                    pDescription.classList.add('text-zinc-400');
                 }
-            });
+            }
+        });
 
-            // 2. KÍCH HOẠT ĐỔI HÌNH TRÊN ĐIỆN THOẠI (HIỆU ỨNG CROSS-FADE LỜ MỜ)
-            phoneImagesArr.forEach(img => {
-                const imgIdx = parseInt(img.getAttribute('data-img-index'));
-                if(imgIdx === activeIndex) {
-                    // Ảnh active: Hiện rõ, to lên kích thước chuẩn
-                    img.classList.remove('opacity-0', 'scale-105', 'z-10');
-                    img.classList.add('opacity-100', 'scale-100', 'z-20');
-                } else {
-                    // Ảnh cũ/khác: Mờ đi, zoom nhẹ ra sau
-                    img.classList.remove('opacity-100', 'scale-100', 'z-20');
-                    img.classList.add('opacity-0', 'scale-105', 'z-10');
-                }
-            });
-        };
 
-        window.addEventListener('scroll', updatePhoneFeatureByScroll);
-        window.addEventListener('resize', updatePhoneFeatureByScroll);
-        
-        // Gọi ngay 1 lần để set ảnh đầu tiên lúc vừa load web (khắc phục lỗi đen màn)
-        setTimeout(updatePhoneFeatureByScroll, 50); 
-    }
+        // 2. ĐIỀU PHỐI ẢNH ĐIỆN THOẠI CHUẨN XÁC
+        const currentlyActiveBlock = exerciseBlocks[targetActiveIndex];
+        if (currentlyActiveBlock) {
+            const imagePathToSwitch = currentlyActiveBlock.getAttribute('data-image');
+           
+            if (interactivePhone.getAttribute('src') !== imagePathToSwitch) {
+                interactivePhone.style.opacity = '0.3';
+               
+                setTimeout(() => {
+                    interactivePhone.src = imagePathToSwitch;
+                    interactivePhone.style.opacity = '1';
+                }, 120);
+            }
+        }
+    };
+
+
+    // Gắn sự kiện cuộn chuột thực tế
+    window.addEventListener('scroll', updateExerciseLayoutByScroll);
+    // Kích hoạt ngay lập tức lần đầu khi tải xong trang web
+    updateExerciseLayoutByScroll();
+}
+
 
     // === 2. XỬ LÝ GỬI EMAIL ĐĂNG KÝ (Đã cập nhật 2 URL) ===
     const emailForm = document.getElementById('email-form');
     const emailInput = document.getElementById('email-input');
     const submitBtn = document.getElementById('submit-btn');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -157,10 +276,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             const originalBtnText = submitBtn.innerText;
             submitBtn.innerText = 'Đang xử lý...';
             submitBtn.disabled = true;
             submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -228,8 +411,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             const formData = new FormData();
             formData.append('email', emailValue);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -320,6 +567,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // === 3. XỬ LÝ MENU BÀI TẬP & NÚT BACK TRÌNH DUYỆT ===
     const navBaitapBtn = document.getElementById('nav-baitap');
     const dropdownBaitap = document.getElementById('dropdown-baitap');
@@ -364,7 +643,71 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const arrowIcon = navBaitapBtn ? navBaitapBtn.querySelector('svg') : null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -443,6 +786,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         document.addEventListener('click', (e) => {
             if (!navBaitapBtn.contains(e.target) && !dropdownBaitap.contains(e.target)) {
                 dropdownBaitap.classList.add('opacity-0');
@@ -451,6 +826,38 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -536,6 +943,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             mainLandingPage.classList.add('hidden');
             exerciseLibrarySection.classList.remove('hidden');
            
@@ -579,6 +1018,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const showHomeView = () => {
         if (exerciseLibrarySection && mainLandingPage) {
             // ĐỔI GẠCH CHÂN VỀ TRANG CHỦ
@@ -589,11 +1060,47 @@ const showHomeView = () => {
 
 
 
+
+
+
+
             exerciseLibrarySection.classList.add('hidden');
             mainLandingPage.classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -666,6 +1173,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     window.addEventListener('popstate', (event) => {
         if (event.state && event.state.view === 'library') {
             showLibraryView(event.state.category);
@@ -673,6 +1212,38 @@ const showHomeView = () => {
             showHomeView();
         }
     });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -744,6 +1315,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const backToHomeBtn = document.getElementById('back-to-home-btn');
     if (backToHomeBtn) {
         backToHomeBtn.addEventListener('click', (e) => {
@@ -752,6 +1355,38 @@ const showHomeView = () => {
             showHomeView();
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -844,6 +1479,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // === 4. KHO DỮ LIỆU & TÍNH NĂNG LỌC CHO "WORKOUT" ===
     const workoutDatabase = [
         { filter: 'nguc', label: 'Cơ Ngực', name: 'Push-up: Hít đất cơ bản' },
@@ -861,6 +1528,38 @@ const showHomeView = () => {
         { filter: 'nguc', label: 'Cơ Ngực', name: 'One-arm Push-up: Hít đất một tay' },
         { filter: 'nguc', label: 'Cơ Ngực', name: 'Kneeling Push-up: Hít đất quỳ gối' },
         { filter: 'nguc', label: 'Cơ Ngực', name: 'Isometric Chest Squeeze: Ép lòng bàn tay' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -937,6 +1636,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'vai', label: 'Cơ Vai', name: 'Pike Push-up: Hít đất gập góc (chữ V ngược)' },
         { filter: 'vai', label: 'Cơ Vai', name: 'Elevated Pike Push-up: Hít đất gập góc kê chân cao' },
         { filter: 'vai', label: 'Cơ Vai', name: 'Handstand Wall Walk: Bò lùi lên tường' },
@@ -979,6 +1710,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'tay', label: 'Cơ Tay', name: 'Bench Dip: Nhún tay sau trên ghế' },
         { filter: 'tay', label: 'Cơ Tay', name: 'Floor Dip: Nhún tay sau trên sàn' },
         { filter: 'tay', label: 'Cơ Tay', name: 'Tricep Extension Push-up: Hít đất duỗi khuỷu tay' },
@@ -989,6 +1752,38 @@ const showHomeView = () => {
         { filter: 'tay', label: 'Cơ Tay', name: 'Sphinx Push-up: Hít đất nhân sư' },
         { filter: 'tay', label: 'Cơ Tay', name: 'Reverse Push-up: Hít đất ngược' },
         { filter: 'tay', label: 'Cơ Tay', name: 'Commandos: Plank lên xuống bàn tay/khuỷu tay' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1073,6 +1868,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'chan', label: 'Chân & Mông', name: 'Squat: Ngồi xổm cơ bản' },
         { filter: 'chan', label: 'Chân & Mông', name: 'Jump Squat: Squat bật nhảy' },
         { filter: 'chan', label: 'Chân & Mông', name: 'Sumo Squat: Squat mở rộng chân' },
@@ -1093,6 +1920,38 @@ const showHomeView = () => {
         { filter: 'chan', label: 'Chân & Mông', name: 'Step-up: Bước lên bục/ghế' },
         { filter: 'chan', label: 'Chân & Mông', name: 'Cossack Squat: Squat dồn trọng tâm sang 1 bên' },
         { filter: 'chan', label: 'Chân & Mông', name: 'Lunge Jumps: Chùng chân bật nhảy đổi bên' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1170,6 +2029,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const workoutFilters = [
         { id: 'all', name: 'Tất cả' },
         { id: 'nguc', name: 'Cơ Ngực' },
@@ -1180,6 +2071,38 @@ const showHomeView = () => {
         { id: 'chan', name: 'Chân & Mông' },
         { id: 'toanthan', name: 'Toàn thân' }
     ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1257,9 +2180,73 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         renderGrid(workoutDatabase);
         libraryDesc.innerText = `Thư viện Bodyweight khổng lồ với ${workoutDatabase.length} bài tập không cần tạ.`;
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1335,6 +2322,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (filterId === 'all') {
             renderGrid(workoutDatabase);
         } else {
@@ -1342,6 +2361,38 @@ const showHomeView = () => {
             renderGrid(filteredData);
         }
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1421,6 +2472,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'vinyasa', label: 'Vinyasa Yoga', name: 'Chuỗi chào mặt trời A (Surya Namaskar A / Sun Salutation A)' },
         { filter: 'vinyasa', label: 'Vinyasa Yoga', name: 'Tư thế tấm ván (Phalakasana / Plank Pose)' },
         { filter: 'vinyasa', label: 'Vinyasa Yoga', name: 'Tư thế chống đẩy thấp (Chaturanga Dandasana / Four-Limbed Staff Pose)' },
@@ -1434,6 +2517,38 @@ const showHomeView = () => {
         { filter: 'vinyasa', label: 'Vinyasa Yoga', name: 'Tư thế chiến binh đảo ngược (Viparita Virabhadrasana / Reverse Warrior)' },
         { filter: 'vinyasa', label: 'Vinyasa Yoga', name: 'Tư thế góc nghiêng mở rộng (Utthita Parsvakonasana / Extended Side Angle Pose)' },
         { filter: 'vinyasa', label: 'Vinyasa Yoga', name: 'Tư thế hoang dã (Camatkarasana / Wild Thing)' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1511,6 +2626,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'iyengar', label: 'Iyengar Yoga', name: 'Tư thế cây cầu có gạch hỗ trợ (Supported Bridge Pose)' },
         { filter: 'iyengar', label: 'Iyengar Yoga', name: 'Tư thế góc cố định nằm ngửa với gối (Supta Baddha Konasana)' },
         { filter: 'iyengar', label: 'Iyengar Yoga', name: 'Tư thế đứng đầu có tường hỗ trợ (Salamba Sirsasana)' },
@@ -1524,6 +2671,38 @@ const showHomeView = () => {
         { filter: 'iyengar', label: 'Iyengar Yoga', name: 'Tư thế anh hùng ngồi trên gạch (Virasana)' },
         { filter: 'iyengar', label: 'Iyengar Yoga', name: 'Tư thế góc cố định ngồi trên chăn gấp (Baddha Konasana)' },
         { filter: 'iyengar', label: 'Iyengar Yoga', name: 'Tư thế nửa cái cày với ghế hỗ trợ (Supported Half Halasana)' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1600,6 +2779,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'hot', label: 'Hot Yoga', name: 'Bài tập hít thở sâu (Pranayama / Deep Breathing)' },
         { filter: 'hot', label: 'Hot Yoga', name: 'Tư thế cái ghế đứng mũi chân (Awkward Pose)' },
         { filter: 'hot', label: 'Hot Yoga', name: 'Tư thế đại bàng (Garudasana / Eagle Pose)' },
@@ -1644,6 +2855,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         { filter: 'power', label: 'Power Yoga', name: 'Tư thế con quạ (Bakasana / Crow Pose)' },
         { filter: 'power', label: 'Power Yoga', name: 'Tư thế tám góc (Astavakrasana / Eight-Angle Pose)' },
         { filter: 'power', label: 'Power Yoga', name: 'Tư thế con quạ nghiêng (Parsva Bakasana / Side Crow Pose)' },
@@ -1656,6 +2899,38 @@ const showHomeView = () => {
         { filter: 'power', label: 'Power Yoga', name: 'Tư thế chiến binh 3 (Virabhadrasana III / Warrior III)' },
         { filter: 'power', label: 'Power Yoga', name: 'Tư thế bồ câu bay (Eka Pada Galavasana / Flying Pigeon Pose)' },
         { filter: 'power', label: 'Power Yoga', name: 'Nhảy lùi qua chaturanga (Jump back to Chaturanga)' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1733,6 +3008,38 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     const yogaFilters = [
         { id: 'all', name: 'Tất cả' },
         { id: 'hatha', name: 'Hatha Yoga' },
@@ -1744,6 +3051,38 @@ const showHomeView = () => {
         { id: 'power', name: 'Power Yoga' },
         { id: 'gentle', name: 'Gentle Yoga' }
     ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1821,9 +3160,73 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         renderGrid(yogaDatabase);
         libraryDesc.innerHTML = `Hành trình kết nối thân - tâm - trí với ${yogaDatabase.length} tư thế Yoga đa dạng từ cơ bản đến nâng cao.`;
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1870,6 +3273,9 @@ const showHomeView = () => {
 
 
 
+
+
+
         if (filterId === 'all') {
             renderGrid(yogaDatabase);
         } else {
@@ -1877,6 +3283,22 @@ const showHomeView = () => {
             renderGrid(filteredData);
         }
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1926,6 +3348,22 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 2. Pilates Nâng cao (15 bài)
     { filter: 'nang-cao', label: 'Pilates Nâng cao', name: 'Động tác chéo chân (Criss Cross)' },
     { filter: 'nang-cao', label: 'Pilates Nâng cao', name: 'Động tác chữ V (Teaser)' },
@@ -1942,6 +3380,22 @@ const showHomeView = () => {
     { filter: 'nang-cao', label: 'Pilates Nâng cao', name: 'Động tác con cua (The Crab)' },
     { filter: 'nang-cao', label: 'Pilates Nâng cao', name: 'Kiểm soát cân bằng (Control Balance)' },
     { filter: 'nang-cao', label: 'Pilates Nâng cao', name: 'Hít đất kiểu Pilates (Pilates Push Up)' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1990,6 +3444,22 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 4. Pilates với Bóng (Stability Ball) (15 bài)
     { filter: 'bong', label: 'Pilates với Bóng', name: 'Bắc cầu với bóng (Ball Bridge)' },
     { filter: 'bong', label: 'Pilates với Bóng', name: 'Gập bụng với bóng (Ball Crunch)' },
@@ -2006,6 +3476,22 @@ const showHomeView = () => {
     { filter: 'bong', label: 'Pilates với Bóng', name: 'Mở rộng lưng với bóng (Ball Back Extension)' },
     { filter: 'bong', label: 'Pilates với Bóng', name: 'Co gối với bóng (Ball Knee Tuck)' },
     { filter: 'bong', label: 'Pilates với Bóng', name: 'Động tác Thiên nga với bóng (Ball Swan)' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2053,6 +3539,22 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // 6. Pilates với Dây kháng lực (Resistance Band) (14 bài)
     { filter: 'day', label: 'Pilates với Dây', name: 'Kéo dây lưng (Band Row)' },
     { filter: 'day', label: 'Pilates với Dây', name: 'Đẩy ngực với dây (Band Chest Press)' },
@@ -2068,6 +3570,22 @@ const showHomeView = () => {
     { filter: 'day', label: 'Pilates với Dây', name: 'Bắc cầu với dây (Band Bridging)' },
     { filter: 'day', label: 'Pilates với Dây', name: 'Tư thế thiên nga với dây (Band Swan)' },
     { filter: 'day', label: 'Pilates với Dây', name: 'Hít đất với dây (Band Push Up)' },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2114,6 +3632,22 @@ const showHomeView = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const pilatesFilters = [
     { id: 'all', name: 'Tất cả' },
     { id: 'co-dien', name: 'Pilates Cổ điển' },
@@ -2124,6 +3658,22 @@ const pilatesFilters = [
     { id: 'day', name: 'Pilates với Dây' },
     { id: 'phuc-hoi', name: 'Phục hồi & Giãn cơ' }
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2169,9 +3719,41 @@ const renderPilatesCategory = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     renderGrid(pilatesDatabase); // Sử dụng lại hàm renderGrid của mục Workout
     libraryDesc.innerText = `Thư viện Pilates đa dạng với ${pilatesDatabase.length} bài tập từ cơ bản đến nâng cao.`;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2202,6 +3784,8 @@ window.filterPilates = (filterId) => {
     }
 
 
+
+
     if (filterId === 'all') {
         renderGrid(pilatesDatabase);
     } else {
@@ -2209,6 +3793,8 @@ window.filterPilates = (filterId) => {
         renderGrid(filteredData);
     }
 };
+
+
 
 
 // 1. Cơ sở dữ liệu đòn đấm Boxing
@@ -2223,6 +3809,8 @@ const boxingDatabase = [
 ];
 
 
+
+
 // 2. Mảng chứa các bộ lọc (Filter) của Boxing
 const boxingFilters = [
     { id: 'all', name: 'Tất cả' },
@@ -2230,6 +3818,8 @@ const boxingFilters = [
     { id: 'hook', name: 'Đòn móc ngang' },
     { id: 'uppercut', name: 'Đòn móc ngược' }
 ];
+
+
 
 
 // 3. Hàm render danh mục Boxing
@@ -2249,10 +3839,14 @@ const renderBoxingCategory = () => {
     libraryFiltersContainer.innerHTML = filterHTML;
 
 
+
+
     // Hiển thị toàn bộ dữ liệu ban đầu
     renderGrid(boxingDatabase);
     libraryDesc.innerText = `Thư viện Boxing đa dạng với ${boxingDatabase.length} đòn đấm từ cơ bản đến nâng cao.`;
 };
+
+
 
 
 // 4. Hàm xử lý khi click chọn bộ lọc
@@ -2271,6 +3865,8 @@ window.filterBoxing = (filterId) => {
     }
 
 
+
+
     // Lọc dữ liệu
     if (filterId === 'all') {
         renderGrid(boxingDatabase);
@@ -2280,100 +3876,6 @@ window.filterBoxing = (filterId) => {
     }
 };
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,27 +13,54 @@
 <body class="bg-[#09090b] text-white min-h-screen flex flex-col">
 
     <!-- HEADER (Giữ nguyên như trang chủ) -->
-    <header class="fixed w-full top-0 z-50 bg-[#09090b]/90 backdrop-blur-sm border-b border-zinc-800/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center gap-12">
-                    <a href="index.html" class="flex items-center gap-2">
-                        <!-- Chỗ này là Logo VIKA của bạn -->
-                        <span class="text-[#ffb701] font-bold text-2xl italic">V</span>
-                        <span class="text-xs font-bold tracking-widest mt-1">VIKA</span>
-                    </a>
-                    <nav class="hidden md:flex gap-8 text-sm font-medium">
-                        <a href="index.html" class="hover:text-[#ffb701] transition-colors">Trang chủ</a>
-                        <a href="baitap.html" class="hover:text-[#ffb701] transition-colors">Bài tập</a>
-                        <a href="thuthach.html" class="hover:text-[#ffb701] transition-colors">Thử thách</a>
-                    </nav>
-                </div>
-                <div class="flex items-center gap-6">
-                    <a href="dangnhap.html" class="text-sm font-medium hover:text-[#ffb701] transition-colors">Đăng nhập</a>
-                    <a href="dangky.html" class="bg-[#ffb701] text-black px-6 py-2.5 rounded-full text-sm font-bold hover:bg-yellow-400 transition-colors">Đăng ký miễn phí</a>
+</head>
+<body class="bg-bg-secondary text-text-primary transition-colors duration-300">
+
+
+    <!-- ================= HEADER ================= -->
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 lg:px-8 py-5 transition-all duration-300">
+        <nav class="mx-auto max-w-[1400px] flex items-center justify-between bg-white/70 dark:bg-[#1a1a1c]/70 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-full px-6 lg:px-8 py-2.5 shadow-sm dark:shadow-lg transition-colors duration-300">
+           
+            <!-- Logo -->
+            <div class="flex items-center gap-x-12">
+                <a href="index.html" id="nav-logo" class="flex items-center transition-transform hover:scale-105">
+                    <img src="logo.png" alt="VIKA Logo" class="h-12 sm:h-14 lg:h-16 w-auto object-contain transition-all duration-300 dark:invert-0 invert" />
+                </a>
+
+
+                <!-- Menu Navigation -->
+                <div class="hidden lg:flex items-center gap-x-8">
+                    <a href="index.html" id="nav-menu-home" class="text-main-red font-bold text-sm transition-colors nav-active">Trang chủ</a>
+                   
+                    <!-- Nút Bài tập + Dropdown -->
+                    <div class="relative group" id="nav-baitap-container">
+                        <a href="baitap.html" id="nav-baitap" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors flex items-center gap-1 cursor-pointer">
+                            Bài tập
+                        </a>
+                       
+
+                    </div>
+
+
+                    <a href="thuthach.html" class="text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Thử thách</a>
+                  
                 </div>
             </div>
-        </div>
+
+
+            <!-- Nút Action & Theme Toggle -->
+            <div class="flex items-center gap-4 lg:gap-6">
+                <a href="dangnhap.html" class="hidden lg:block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white font-semibold text-sm transition-colors">Đăng nhập</a>
+               <a href="dangky.html" class="hidden sm:block px-6 py-2.5 bg-[#ffb701] hover:bg-yellow-500 text-black font-bold text-sm rounded-full transition-transform hover:scale-105 shadow-[0_0_15px_rgba(255,183,1,0.3)]">
+    Đăng ký miễn phí
+</a>
+               
+                <button id="theme-toggle" class="p-2.5 rounded-full bg-gray-200 dark:bg-white/10 text-gray-800 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-white/20 transition-all">
+                    <svg class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/></svg>
+                    <svg class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/></svg>
+                </button>
+            </div>          
+        </nav>
     </header>
 
  <!-- NỘI DUNG TRANG GÓI TẬP LUYỆN -->
@@ -82,45 +109,42 @@
         </div>
     </main>
 
-<!-- FOOTER (Đã cập nhật link chuẩn theo danh sách) -->
-    <footer class="border-t border-zinc-800 bg-[#09090b] pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Cột 1 -->
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-6">Dịch vụ</h3>
-                    <ul class="space-y-4 text-zinc-400 text-sm">
-                        <li><a href="baitap.html" class="hover:text-[#ffb701] transition-colors">Bài tập</a></li>
-                        <li><a href="hlvai.html" class="hover:text-[#ffb701] transition-colors">Huấn luyện viên AI</a></li>
-                        <li><a href="tvelite.html" class="hover:text-[#ffb701] transition-colors">Thành viên Elite</a></li>
-                        <li><a href="goitapluyen.html" class="hover:text-[#ffb701] transition-colors">Gói tập luyện</a></li>
-                        <li><a href="taiungdung.html" class="hover:text-[#ffb701] transition-colors">Tải ứng dụng</a></li>
-                    </ul>
-                </div>
-                <!-- Cột 2 -->
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-6">Tài nguyên</h3>
-                    <ul class="space-y-4 text-zinc-400 text-sm">
-                        <li><a href="blog.html" class="hover:text-[#ffb701] transition-colors">Blog fitness</a></li>
-                        <li><a href="congdong.html" class="hover:text-[#ffb701] transition-colors">Cộng đồng</a></li>
-                        <li><a href="tintuc.html" class="hover:text-[#ffb701] transition-colors">Tin tức</a></li>
-                        <li><a href="FAQ.html" class="hover:text-[#ffb701] transition-colors">FAQ</a></li>
-                        <li><a href="lotrinhtapluyen.html" class="hover:text-[#ffb701] transition-colors">Lộ trình tập luyện</a></li>
-                    </ul>
-                </div>
-                <!-- Cột 3 -->
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-6">Thông tin</h3>
-                    <ul class="space-y-4 text-zinc-400 text-sm">
-                        <li><a href="vechungtoi.html" class="hover:text-[#ffb701] transition-colors">Về chúng tôi</a></li>
-                        <li><a href="dieu-khoan.html" class="hover:text-[#ffb701] transition-colors">Điều khoản sử dụng</a></li>
-                        <li><a href="chinhsach.html" class="hover:text-[#ffb701] transition-colors">Chính sách quyền riêng tư</a></li>
-                        <li><a href="lienhe.html" class="hover:text-[#ffb701] transition-colors">Liên hệ</a></li>
-                    </ul>
-                </div>
+
+  <!-- ================= FOOTER ================= -->
+ <footer class="bg-[#09090b] border-t border-gray-800 text-gray-400">
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Dịch vụ</h3>
+                <ul class="space-y-2">
+                    <li><a href="baitap.html" class="hover:text-main-red transition-colors">Bài tập</a></li>
+                    <li><a href="hlvai.html" class="hover:text-main-red transition-colors">Huấn luyện viên AI</a></li>
+                    <li><a href="tvelite.html" class="hover:text-main-red transition-colors">Thành viên Elite</a></li>
+                    <li><a href="goitapluyen.html" class="hover:text-main-red transition-colors">Gói tập luyện</a></li>
+                    <li><a href="taiungdung.html" class="hover:text-main-red transition-colors">Tải ứng dụng</a></li>
+                </ul>
             </div>
-        </div>
-    </footer>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Tài nguyên</h3>
+                <ul class="space-y-2">
+                    <li><a href="blog.html" class="hover:text-main-red transition-colors">Blog fitness</a></li>
+                    <li><a href="congdong.html" class="hover:text-main-red transition-colors">Cộng đồng</a></li>
+                    <li><a href="tintuc.html" class="hover:text-main-red transition-colors">Tin tức</a></li>
+                    <li><a href="FAQ.html" class="hover:text-main-red transition-colors">FAQ</a></li>
+                    <li><a href="lotrinhtapluyen.html" class="hover:text-main-red transition-colors">Lộ trình tập luyện</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg mb-4 text-white">Thông tin</h3>
+                <ul class="space-y-2">
+                    <li><a href="vechungtoi.html" class="hover:text-main-red transition-colors">Về chúng tôi</a></li>
+                    <li><a href="#" class="hover:text-main-red transition-colors">Điều khoản sử dụng</a></li>
+                    <li><a href="privacy.html" class="hover:text-main-red transition-colors">Chính sách quyền riêng tư</a></li>
+                    <li><a href="lienhe.html" class="hover:text-main-red transition-colors">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div>
+ </footer>
 </body>
 </html>
 

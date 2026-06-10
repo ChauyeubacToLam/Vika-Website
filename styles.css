@@ -331,6 +331,7 @@ button {
   max-height: calc(100vh - var(--header-height));
   visibility: visible;
   opacity: 1;
+  overflow-y: auto;
 }
 
 .mobile-nav > a,
@@ -353,14 +354,9 @@ button {
 }
 
 .mobile-accordion-panel {
-  display: grid;
-  grid-template-rows: 0fr;
+  max-height: 0;
   overflow: hidden;
-  transition: grid-template-rows var(--speed);
-}
-
-.mobile-accordion-panel.is-open {
-  grid-template-rows: 1fr;
+  transition: max-height var(--speed);
 }
 
 .mobile-accordion-panel a {

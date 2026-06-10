@@ -26,7 +26,14 @@ document.querySelectorAll("[data-mobile-accordion]").forEach((button) => {
   button.addEventListener("click", () => {
     const open = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", String(!open));
-    panel?.classList.toggle("is-open", !open);
+    
+    // Smooth accordion animation
+    if (!open) {
+      // Calculate height including padding
+      panel.style.maxHeight = panel.scrollHeight + 32 + "px";
+    } else {
+      panel.style.maxHeight = "0px";
+    }
   });
 });
 

@@ -356,9 +356,14 @@ button {
 }
 
 .mobile-accordion-panel {
-  max-height: 0;
+  height: 0;
   overflow: hidden;
-  transition: max-height var(--speed);
+  opacity: 0;
+  transform: translateY(-2px);
+  transition:
+    height 220ms cubic-bezier(0.2, 0, 0, 1),
+    opacity 160ms ease,
+    transform 220ms cubic-bezier(0.2, 0, 0, 1);
 }
 
 .mobile-accordion-panel a {
@@ -1520,7 +1525,7 @@ p {
   }
 
   .mobile-accordion-button .chevron {
-    transition: transform 0.3s ease;
+    transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
   }
 
   .mobile-accordion-button[aria-expanded="true"] .chevron {
@@ -1528,10 +1533,15 @@ p {
   }
 
   .mobile-accordion-panel {
-    max-height: 0;
+    height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, padding 0.4s ease;
     opacity: 0;
+    transform: translateY(-2px);
+    transition:
+      height 220ms cubic-bezier(0.2, 0, 0, 1),
+      opacity 160ms ease,
+      padding 220ms cubic-bezier(0.2, 0, 0, 1),
+      transform 220ms cubic-bezier(0.2, 0, 0, 1);
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -1540,6 +1550,7 @@ p {
 
   .mobile-accordion-button[aria-expanded="true"] + .mobile-accordion-panel {
     opacity: 1;
+    transform: translateY(0);
     padding-top: 16px;
     padding-bottom: 16px;
   }

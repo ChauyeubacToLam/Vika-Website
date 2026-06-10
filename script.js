@@ -13,9 +13,7 @@ function setMobileMenu(open) {
 
   if (!open) {
     mobileNav.querySelectorAll("[data-mobile-accordion]").forEach((button) => {
-      button.setAttribute("aria-expanded", "false");
-      const panel = button.nextElementSibling;
-      if (panel) panel.style.maxHeight = "0px";
+      setMobileAccordion(button, false, true);
     });
   }
 }
@@ -33,19 +31,47 @@ document.querySelectorAll(".brand").forEach((link) => {
   link.addEventListener("click", () => setMobileMenu(false));
 });
 
-document.querySelectorAll("[data-mobile-accordion]").forEach((button) => {
+function setMobileAccordion(button, open, instant = false) {
   const panel = button.nextElementSibling;
+  if (!panel) return;
+
+  cancelAnimationFrame(panel._accordionFrame || 0);
+  panel.removeEventListener("transitionend", panel._accordionCleanup || (() => {}));
+
+  const currentHeight = panel.getBoundingClientRect().height;
+  panel.style.height = `${currentHeight}px`;
+  panel.style.willChange = "height, opacity";
+
+  const finish = (event) => {
+    if (event.propertyName !== "height") return;
+    panel.style.willChange = "";
+    if (open) panel.style.height = "auto";
+    panel.removeEventListener("transitionend", finish);
+  };
+  panel._accordionCleanup = finish;
+
+  if (instant) {
+    panel.style.transitionDuration = "1ms";
+    button.setAttribute("aria-expanded", String(open));
+    panel.style.height = open ? "auto" : "0px";
+    panel.style.willChange = "";
+    requestAnimationFrame(() => {
+      panel.style.transitionDuration = "";
+    });
+    return;
+  }
+
+  panel._accordionFrame = requestAnimationFrame(() => {
+    button.setAttribute("aria-expanded", String(open));
+    panel.style.height = open ? `${panel.scrollHeight}px` : "0px";
+    panel.addEventListener("transitionend", finish);
+  });
+}
+
+document.querySelectorAll("[data-mobile-accordion]").forEach((button) => {
   button.addEventListener("click", () => {
     const open = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", String(!open));
-    
-    // Smooth accordion animation
-    if (!open) {
-      // Calculate height including padding
-      panel.style.maxHeight = panel.scrollHeight + 32 + "px";
-    } else {
-      panel.style.maxHeight = "0px";
-    }
+    setMobileAccordion(button, !open);
   });
 });
 

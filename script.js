@@ -349,3 +349,64 @@ if (bannerCarousel) {
 
   startAutoPlay();
 }
+
+// Form Submission to Google Sheets
+const experienceForm = document.querySelector('.experience-form');
+if (experienceForm) {
+  experienceForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = experienceForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Đang gửi...';
+    submitBtn.disabled = true;
+
+    const formData = new FormData(experienceForm);
+    const data = Object.fromEntries(formData.entries());
+
+    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwnFA4HlzmH1irh6h99ygpOd9yUnlnsw6gi0s6bGBDQ6DCRYpVGwQjoyo4tnIzPK2um0Q/exec';
+
+    try {
+      await fetch(WEB_APP_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: JSON.stringify(data),
+      });
+
+      // Assuming success due to no-cors
+      submitBtn.textContent = 'Gửi thành công!';
+      submitBtn.style.backgroundColor = '#4caf50';
+      submitBtn.style.borderColor = '#4caf50';
+      submitBtn.style.color = '#fff';
+      experienceForm.reset();
+
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        submitBtn.style.backgroundColor = '';
+        submitBtn.style.borderColor = '';
+        submitBtn.style.color = '';
+        
+        // Close modal
+        const modal = document.getElementById('experience-modal');
+        if (modal) {
+          modal.classList.remove('is-open');
+          modal.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      }, 3000);
+
+    } catch (error) {
+      console.error('Lỗi khi gửi form:', error);
+      submitBtn.textContent = 'Có lỗi xảy ra, vui lòng thử lại';
+      
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      }, 3000);
+    }
+  });
+}

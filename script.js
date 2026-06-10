@@ -10,6 +10,14 @@ function setMobileMenu(open) {
   menuToggle.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
   mobileNav.classList.toggle("is-open", open);
   document.body.classList.toggle("nav-open", open);
+
+  if (!open) {
+    mobileNav.querySelectorAll("[data-mobile-accordion]").forEach((button) => {
+      button.setAttribute("aria-expanded", "false");
+      const panel = button.nextElementSibling;
+      if (panel) panel.style.maxHeight = "0px";
+    });
+  }
 }
 
 menuToggle?.addEventListener("click", () => {
@@ -18,6 +26,10 @@ menuToggle?.addEventListener("click", () => {
 });
 
 document.querySelectorAll(".mobile-nav a").forEach((link) => {
+  link.addEventListener("click", () => setMobileMenu(false));
+});
+
+document.querySelectorAll(".brand").forEach((link) => {
   link.addEventListener("click", () => setMobileMenu(false));
 });
 

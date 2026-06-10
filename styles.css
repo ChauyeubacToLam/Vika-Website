@@ -1690,6 +1690,11 @@ p {
   background: #ffffff;
 }
 
+.italic-placeholder::placeholder {
+  font-style: italic;
+  opacity: 0.6;
+}
+
 /* Banner Carousel */
 .banner-carousel {
   position: relative;

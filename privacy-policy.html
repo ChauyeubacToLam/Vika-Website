@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VIKA - Huấn luyện viên AI cá nhân cho người Việt</title>
+    <meta
+      name="description"
+      content="VIKA dùng AI và camera điện thoại để chỉnh tư thế, đếm rep và cá nhân hóa lộ trình tập luyện bằng tiếng Việt."
+    />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="apple-touch-icon" href="vika-logo-square.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="preload" href="vika-wordmark.png" as="image" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Bỏ qua để đến nội dung chính</a>
+
+    <header class="site-header" data-header>
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="VIKA">
+          <img class="brand-logo" src="vika-wordmark.png" width="359" height="164" alt="VIKA" decoding="async" />
+        </a>
+
+        <nav class="desktop-nav" aria-label="Điều hướng chính">
+          <button class="nav-link nav-link-button" type="button" data-mega-trigger="mega-features" aria-expanded="false">
+            Tính năng
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" style="display: inline-block; vertical-align: middle; margin-top: -2px; margin-left: 2px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <button class="nav-link nav-link-button" type="button" data-mega-trigger="mega-how" aria-expanded="false">
+            Cách hoạt động
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" style="display: inline-block; vertical-align: middle; margin-top: -2px; margin-left: 2px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <button class="nav-link nav-link-button" type="button" data-mega-trigger="mega-community" aria-expanded="false">
+            Cộng đồng
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" style="display: inline-block; vertical-align: middle; margin-top: -2px; margin-left: 2px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <button class="nav-link nav-link-button" type="button" data-mega-trigger="mega-blog" aria-expanded="false">
+            Blog
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" style="display: inline-block; vertical-align: middle; margin-top: -2px; margin-left: 2px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <button class="nav-link nav-link-button" type="button" data-mega-trigger="mega-about" aria-expanded="false">
+            Về VIKA
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" style="display: inline-block; vertical-align: middle; margin-top: -2px; margin-left: 2px;" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+        </nav>
+
+        <div class="header-actions">
+          <a class="signin-link desktop-only" href="#login" style="background: transparent;">Đăng nhập</a>
+          <a class="button button-primary" href="#demo">Xem demo</a>
+          <button class="menu-toggle" type="button" data-menu-toggle aria-label="Mở menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mega-panel" data-mega-panel id="mega-features">
+        <div class="mega-inner">
+          <div class="mega-column">
+            <p class="mega-title">Hiện có</p>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>Lộ trình cá nhân hóa</strong></span>
+            </a>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>AI Tracking dáng</strong></span>
+            </a>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>Hướng dẫn sau bài tập</strong></span>
+            </a>
+          </div>
+          <div class="mega-column">
+            <p class="mega-title">Sắp ra mắt</p>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>Bài tập cho bệnh lý đặc thù</strong></span>
+            </a>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>Đa dạng bộ môn</strong></span>
+            </a>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>Quản lý dinh dưỡng & thực đơn</strong></span>
+            </a>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>AI Chatbot hỗ trợ 24/7</strong></span>
+            </a>
+            <a href="#features" class="mega-item no-icon">
+              <span><strong>Nhắc nhở & lịch tập thông minh</strong></span>
+            </a>
+          </div>
+          <div class="mega-feature">
+            <div class="image-placeholder">
+              [Ảnh demo AI tracking]
+            </div>
+            <p style="margin-top: 14px;">Xem VIKA hoạt động thực tế như thế nào</p>
+            <a class="text-link" href="#demo">▶ Xem video demo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mega-panel" data-mega-panel id="mega-how">
+        <div class="mega-inner mega-inner-2col">
+          <div class="mega-column">
+            <p class="mega-title">Quy trình</p>
+            <a href="#how" class="mega-item no-icon">
+              <span><strong>Thiết lập hồ sơ cá nhân</strong></span>
+            </a>
+            <a href="#how" class="mega-item no-icon">
+              <span><strong>Đặt điện thoại và tập</strong></span>
+            </a>
+            <a href="#how" class="mega-item no-icon">
+              <span><strong>Xem kết quả và tiến bộ</strong></span>
+            </a>
+          </div>
+          <div class="mega-feature">
+            <h3>Bắt đầu chỉ trong 3 phút</h3>
+            <p>Không cần thiết bị.<br/>Không cần kinh nghiệm.<br/>Chỉ cần điện thoại.</p>
+            <a class="text-link" href="#download">Tải miễn phí ngay →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mega-panel" data-mega-panel id="mega-community">
+        <div class="mega-inner">
+          <div class="mega-column">
+            <p class="mega-title">Hiện có</p>
+            <a href="#blog" class="mega-item no-icon">
+              <span><strong>Blog VIKA</strong></span>
+            </a>
+            <a href="#community" class="mega-item no-icon">
+              <span><strong>Chia sẻ thành tích</strong></span>
+            </a>
+          </div>
+          <div class="mega-column">
+            <p class="mega-title">Sắp ra mắt</p>
+            <a href="#community" class="mega-item no-icon">
+              <span><strong>Bảng xếp hạng</strong></span>
+            </a>
+            <a href="#community" class="mega-item no-icon">
+              <span><strong>Thử thách hàng tuần</strong></span>
+            </a>
+            <a href="#community" class="mega-item no-icon">
+              <span><strong>Tìm bạn cùng tập</strong></span>
+            </a>
+            <a href="#community" class="mega-item no-icon">
+              <span><strong>Thi đấu ảo & điểm thưởng</strong></span>
+            </a>
+          </div>
+          <div class="mega-feature">
+            <h3>Cộng đồng VIKA đang được xây dựng</h3>
+            <p>Đăng ký sớm để nhận thông báo khi ra mắt + ưu đãi thành viên đầu</p>
+            <a class="text-link" href="#register">Đăng ký nhận thông báo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mega-panel" data-mega-panel id="mega-blog">
+        <div class="mega-inner mega-inner-2col">
+          <div class="mega-column">
+            <p class="mega-title">Chủ đề</p>
+            <a href="#blog" class="mega-item no-icon">
+              <span><strong>Kỹ thuật tập luyện</strong></span>
+            </a>
+            <a href="#blog" class="mega-item no-icon">
+              <span><strong>Sức khỏe & Dinh dưỡng</strong></span>
+            </a>
+            <a href="#blog" class="mega-item no-icon">
+              <span><strong>Yoga & Phục hồi</strong></span>
+            </a>
+            <a href="#blog" class="mega-item no-icon">
+              <span><strong>Câu chuyện thành công</strong></span>
+            </a>
+          </div>
+          <div class="mega-feature">
+            <div class="image-placeholder">
+              [Ảnh thumbnail]
+            </div>
+            <h3 style="margin-top: 14px;">7 lỗi squat phổ biến và cách sửa từng cái</h3>
+            <p class="eyebrow" style="margin-top: 4px;">5 phút đọc · Kỹ thuật</p>
+            <a class="text-link" href="#blog" style="margin-top: 4px;">Đọc ngay →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mega-panel" data-mega-panel id="mega-about">
+        <div class="mega-inner mega-inner-2col">
+          <div class="mega-column">
+            <p class="mega-title">Công ty</p>
+            <a href="#about" class="mega-item no-icon">
+              <span>
+                <strong>Câu chuyện VIKA</strong>
+              </span>
+            </a>
+          </div>
+          <div class="mega-column">
+            <p class="mega-title">Liên hệ & Hỗ trợ</p>
+            <a href="mailto:hello@vikavn.app" class="mega-item no-icon">
+              <span>
+                <strong>Liên hệ</strong>
+              </span>
+            </a>
+            <a href="#support" class="mega-item no-icon">
+              <span>
+                <strong>Trung tâm hỗ trợ</strong>
+              </span>
+            </a>
+            <a href="privacy-policy.html" class="mega-item no-icon">
+              <span>
+                <strong>Chính sách quyền riêng tư</strong>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" data-mobile-nav aria-label="Điều hướng mobile">
+        <div class="mobile-nav-inner">
+          <button class="mobile-accordion-button" type="button" data-mobile-accordion aria-expanded="false">
+            Tính năng
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <div class="mobile-accordion-panel">
+            <a href="#features">Lộ trình cá nhân hóa</a>
+            <a href="#features">AI Tracking dáng</a>
+            <a href="#features">Hướng dẫn sau bài tập</a>
+            <a href="#features">Bài tập cho bệnh lý đặc thù</a>
+            <a href="#features">Đa dạng bộ môn</a>
+            <a href="#features">Quản lý dinh dưỡng & thực đơn</a>
+            <a href="#features">AI Chatbot hỗ trợ 24/7</a>
+            <a href="#features">Nhắc nhở & lịch tập thông minh</a>
+          </div>
+
+          <button class="mobile-accordion-button" type="button" data-mobile-accordion aria-expanded="false">
+            Cách hoạt động
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <div class="mobile-accordion-panel">
+            <a href="#how">Thiết lập hồ sơ cá nhân</a>
+            <a href="#how">Đặt điện thoại và tập</a>
+            <a href="#how">Xem kết quả và tiến bộ</a>
+          </div>
+
+          <button class="mobile-accordion-button" type="button" data-mobile-accordion aria-expanded="false">
+            Cộng đồng
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <div class="mobile-accordion-panel">
+            <a href="#blog">Blog VIKA</a>
+            <a href="#community">Chia sẻ thành tích</a>
+            <a href="#community">Bảng xếp hạng</a>
+            <a href="#community">Thử thách hàng tuần</a>
+            <a href="#community">Tìm bạn cùng tập</a>
+            <a href="#community">Thi đấu ảo & điểm thưởng</a>
+          </div>
+
+          <button class="mobile-accordion-button" type="button" data-mobile-accordion aria-expanded="false">
+            Blog
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <div class="mobile-accordion-panel">
+            <a href="#blog">Kỹ thuật tập luyện</a>
+            <a href="#blog">Sức khỏe & Dinh dưỡng</a>
+            <a href="#blog">Yoga & Phục hồi</a>
+            <a href="#blog">Câu chuyện thành công</a>
+          </div>
+
+          <button class="mobile-accordion-button" type="button" data-mobile-accordion aria-expanded="false">
+            Về VIKA
+            <svg class="chevron" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.2em" width="1.2em" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0V0z"></path><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg>
+          </button>
+          <div class="mobile-accordion-panel">
+            <a href="#about">Câu chuyện VIKA</a>
+            <a href="mailto:hello@vikavn.app">Liên hệ</a>
+            <a href="#support">Trung tâm hỗ trợ</a>
+            <a href="privacy-policy.html">Chính sách quyền riêng tư</a>
+          </div>
+          
+          <div class="mobile-nav-actions">
+            <a class="button button-primary" href="#demo">Xem demo</a>
+            <a class="button button-secondary" href="#login" style="background: transparent;">Đăng nhập</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content" class="privacy-page" style="padding-top: 120px; padding-bottom: 80px; max-width: 800px; margin: 0 auto; padding-left: 20px; padding-right: 20px;">
+      <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 20px;">CHÍNH SÁCH QUYỀN RIÊNG TƯ — VIKA</h1>
+      
+      <div style="font-size: 0.9rem; color: #666; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #ddd; display: flex; gap: 20px;">
+          <p><strong>Hiệu lực từ:</strong> 16/05/2026 </p>
+          <p><strong>Cập nhật lần cuối:</strong> 16/05/2026 </p>
+      </div>
+
+      <div class="rich-text" style="line-height: 1.6; color: #333; font-family: 'Inter', sans-serif;">
+          <p style="margin-bottom: 1rem;">Vika ("Bên Kiểm Soát Dữ Liệu", "chúng tôi") là ứng dụng huấn luyện thể dục cá nhân hóa sử dụng AI. Chính sách này mô tả cách chúng tôi thu thập, sử dụng và bảo vệ dữ liệu cá nhân của Người dùng, theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành và Nghị định số 356/2025/NĐ-CP do Chính phủ nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành.</p>
+          <p style="margin-bottom: 2rem;">Bằng việc sử dụng Vika, Người dùng đồng ý với chính sách này. Nếu không đồng ý, vui lòng ngừng sử dụng Ứng dụng.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">1. ĐỊNH NGHĨA</h2>
+          <ul style="margin-bottom: 2rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;"><strong>Bên Kiểm Soát Dữ Liệu Cá Nhân:</strong> Vika, đại diện bởi Ông Trần Tuấn Kiệt, có trách nhiệm xác định mục đích và phương tiện xử lý dữ liệu cá nhân theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Ứng dụng:</strong> Ứng dụng di động Vika trên iOS, Android và các dịch vụ liên quan.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Người dùng:</strong> Cá nhân sử dụng Ứng dụng.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Dữ liệu cá nhân cơ bản:</strong> Thông tin xác định Người dùng như tên, email, ảnh hồ sơ.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Dữ liệu cá nhân nhạy cảm:</strong> Thông tin sức khỏe và sinh học, bao gồm chiều cao, cân nặng, BMI, vùng đau, lịch sử luyện tập, và dữ liệu chuyển động cơ thể trích xuất từ camera (góc khớp, độ nghiêng thân, tốc độ pha chuyển động, điểm form). Loại dữ liệu này được bảo vệ ở mức cao hơn theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Pháp luật áp dụng:</strong> Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành (hiệu lực từ 01/01/2026), Nghị định số 356/2025/NĐ-CP do Chính phủ nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành, và các quy định liên quan.</li>
+          </ul>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">2. CAMERA VÀ XỬ LÝ TRÊN THIẾT BỊ</h2>
+          <p style="margin-bottom: 1rem;">Vika sử dụng camera điện thoại để phân tích tư thế trong quá trình tập. Toàn bộ video được xử lý trên thiết bị của Người dùng bằng AI cục bộ. Video không được tải lên máy chủ, không được lưu trữ sau khi phân tích, và không được nhân viên Vika hoặc bên thứ ba xem.</p>
+          <p style="margin-bottom: 1rem;">Chỉ kết quả phân tích (góc khớp, số rep, điểm form) được lưu trên máy chủ để theo dõi tiến độ luyện tập.</p>
+          <p style="margin-bottom: 2rem;">Trong tương lai, Vika có kế hoạch cho phép Người dùng tự nguyện đóng góp các đoạn video ngắn của từng rep để cải thiện mô hình AI nhận diện tư thế. Tính năng này chỉ kích hoạt sau khi cập nhật chính sách và Người dùng đồng ý rõ ràng, riêng biệt (không mặc định bật). Người dùng có thể tắt trong cài đặt bất cứ lúc nào. Video đóng góp được dùng nội bộ cho mục đích cải thiện AI và không cung cấp cho bên thứ ba.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">3. DỮ LIỆU THU THẬP VÀ MỤC ĐÍCH SỬ DỤNG</h2>
+          
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem;">Vika thu thập:</h3>
+          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li>Tên, email, ảnh hồ sơ (qua đăng ký email/Apple/Google/Facebook).</li>
+              <li>Thông tin thể chất tự khai (giới tính, tuổi, chiều cao, cân nặng, vùng đau, mục tiêu).</li>
+              <li>Lịch sử luyện tập và dữ liệu hiệu suất (số buổi, bài tập, kết quả phân tích tư thế).</li>
+              <li>Thông tin thiết bị (hệ điều hành, phiên bản ứng dụng, dữ liệu sử dụng và báo cáo lỗi).</li>
+          </ul>
+
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem;">Mục đích sử dụng:</h3>
+          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li>Tạo và quản lý tài khoản.</li>
+              <li>Cung cấp tính năng cốt lõi (bài tập, phân tích tư thế, phản hồi).</li>
+              <li>Cá nhân hóa kế hoạch luyện tập.</li>
+              <li>Cải thiện hiệu suất Ứng dụng.</li>
+              <li>Liên lạc với Người dùng (cập nhật, nhắc nhở, hỗ trợ).</li>
+          </ul>
+
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem;">Vika KHÔNG:</h3>
+          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li>Bán dữ liệu Người dùng.</li>
+              <li>Chia sẻ dữ liệu với nhà quảng cáo.</li>
+              <li>Sử dụng dữ liệu cho quảng cáo nhắm mục tiêu.</li>
+              <li>Cung cấp dữ liệu sức khỏe của Người dùng cho tổ chức bảo hiểm hoặc dịch vụ chăm sóc sức khỏe bên thứ ba (theo Điều 26 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành).</li>
+          </ul>
+          
+          <p style="margin-bottom: 2rem;">Việc sử dụng dữ liệu ẩn danh, tổng hợp để cải thiện AI chỉ thực hiện khi Người dùng đồng ý rõ ràng. Người dùng có thể tắt trong cài đặt.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">4. CƠ SỞ PHÁP LÝ VÀ SỰ ĐỒNG Ý</h2>
+          <ul style="margin-bottom: 2rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">Cơ sở pháp lý xử lý dữ liệu cá nhân là sự đồng ý rõ ràng của Người dùng, được thể hiện tại bước đăng ký và trong quá trình sử dụng Ứng dụng.</li>
+              <li style="margin-bottom: 0.5rem;">Sự đồng ý phải được thể hiện bằng hành động chủ động của Người dùng. Vika không sử dụng cơ chế đồng ý mặc định (ô đồng ý đã tích sẵn) và không coi sự im lặng là đồng ý.</li>
+              <li style="margin-bottom: 0.5rem;">Người dùng có thể rút lại sự đồng ý bất cứ lúc nào. Việc rút lại không ảnh hưởng đến tính hợp pháp của hoạt động xử lý đã thực hiện trước đó.</li>
+              <li style="margin-bottom: 0.5rem;">Do Vika xử lý dữ liệu cá nhân nhạy cảm (sức khỏe, sinh học), Bên Kiểm Soát Dữ Liệu thực hiện và lưu trữ Hồ sơ Đánh giá tác động xử lý dữ liệu cá nhân (DPIA) theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành, gửi cho Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao (A05 — Bộ Công an nước Cộng hòa Xã hội Chủ nghĩa Việt Nam) trong thời hạn quy định.</li>
+          </ul>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">5. DỊCH VỤ BÊN THỨ BA</h2>
+          <p style="margin-bottom: 1rem;">Ứng dụng tích hợp các dịch vụ sau:</p>
+          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;"><strong>Supabase (Singapore):</strong> Lưu trữ dữ liệu tài khoản và kết quả luyện tập.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>MediaPipe (Google):</strong> Thư viện nhận diện tư thế, chạy hoàn toàn trên thiết bị Người dùng. Không gửi dữ liệu đến Google.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>Apple Sign-In, Google Sign-In, Facebook Login:</strong> Xác thực và cung cấp tên, email, ảnh hồ sơ.</li>
+              <li style="margin-bottom: 0.5rem;"><strong>PostHog Inc. (khu vực EU):</strong> Phân tích sản phẩm. Dữ liệu được liên kết với mã định danh ngẫu nhiên thay vì thông tin cá nhân.</li>
+          </ul>
+          <p style="margin-bottom: 2rem;">Các tích hợp tương lai có thể bao gồm dịch vụ email, dịch vụ AI (Anthropic, máy chủ tại Mỹ) hỗ trợ tạo nội dung huấn luyện cá nhân hóa, và đơn vị xử lý thanh toán. Khi triển khai, Vika sẽ cập nhật chính sách và xin sự đồng ý riêng nếu cần thiết.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">6. LƯU TRỮ VÀ XÓA DỮ LIỆU</h2>
+          <p style="margin-bottom: 1rem;">Dữ liệu tài khoản được lưu trong suốt thời gian tài khoản hoạt động. Sau khi xóa tài khoản, dữ liệu sẽ bị xóa trong vòng 30 ngày, trừ trường hợp pháp luật yêu cầu lưu trữ lâu hơn (ví dụ: hồ sơ thanh toán phục vụ nghĩa vụ kế toán, thuế).</p>
+          <p style="margin-bottom: 2rem;">Người dùng có thể yêu cầu xóa tài khoản qua cài đặt trong Ứng dụng hoặc qua email liên hệ.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">7. QUYỀN CỦA NGƯỜI DÙNG</h2>
+          <p style="margin-bottom: 1rem;">Theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành, Người dùng có các quyền sau đối với dữ liệu cá nhân của mình:</p>
+          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
+              <li style="margin-bottom: 0.5rem;">Quyền được biết về hoạt động xử lý dữ liệu cá nhân.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền đồng ý hoặc không đồng ý xử lý dữ liệu.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền truy cập để xem dữ liệu cá nhân của mình.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền chỉnh sửa dữ liệu không chính xác.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền rút lại sự đồng ý bất cứ lúc nào.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền xóa dữ liệu cá nhân.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền hạn chế xử lý dữ liệu trong các trường hợp pháp luật quy định.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền cung cấp dữ liệu — yêu cầu bản sao dữ liệu cá nhân ở định dạng máy đọc được.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền phản đối xử lý dữ liệu.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền khiếu nại, tố cáo, khởi kiện với cơ quan có thẩm quyền.</li>
+              <li style="margin-bottom: 0.5rem;">Quyền yêu cầu bồi thường thiệt hại trong trường hợp dữ liệu bị xâm phạm gây thiệt hại.</li>
+          </ul>
+          <p style="margin-bottom: 2rem;">Người dùng thực hiện các quyền này qua cài đặt trong Ứng dụng hoặc gửi yêu cầu đến vikavn.app@gmail.com. Bên Kiểm Soát Dữ Liệu phản hồi theo các thời hạn quy định tại Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành và Nghị định số 356/2025/NĐ-CP do Chính phủ nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành, và thông báo lý do nếu yêu cầu cần thời gian hoặc bị từ chối có căn cứ.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">8. BẢO MẬT VÀ THÔNG BÁO VI PHẠM</h2>
+          <p style="margin-bottom: 1rem;">Dữ liệu được truyền qua kết nối mã hóa HTTPS. Mật khẩu được mã hóa, không lưu dưới dạng văn bản thuần. Bên Kiểm Soát Dữ Liệu áp dụng các biện pháp bảo mật tiêu chuẩn ngành nhưng không đảm bảo an toàn tuyệt đối.</p>
+          <p style="margin-bottom: 2rem;">Trong trường hợp xảy ra sự cố lộ, mất, hoặc bị truy cập trái phép đối với dữ liệu cá nhân có thể gây tổn hại đến quyền, lợi ích của Người dùng, Bên Kiểm Soát Dữ Liệu sẽ thông báo cho Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao (A05 — Bộ Công an nước Cộng hòa Xã hội Chủ nghĩa Việt Nam) và Người dùng bị ảnh hưởng trong vòng 72 giờ kể từ khi phát hiện, theo Điều 23 Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">9. TRẺ EM</h2>
+          <p style="margin-bottom: 2rem;">Ứng dụng dành cho người dùng từ 16 tuổi trở lên. Người dùng tự xác nhận tuổi tại bước đăng ký. Nếu Bên Kiểm Soát Dữ Liệu phát hiện hoặc nhận báo cáo có căn cứ rằng tài khoản thuộc về người dưới 16 tuổi, tài khoản sẽ bị xóa trong vòng 7 ngày.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">10. CHUYỂN DỮ LIỆU RA NƯỚC NGOÀI</h2>
+          <p style="margin-bottom: 1rem;">Dữ liệu có thể được lưu trữ trên máy chủ tại Singapore (Supabase) và khu vực EU (PostHog). Việc chuyển dữ liệu xuyên biên giới dựa trên sự đồng ý của Người dùng khi chấp nhận chính sách này.</p>
+          <p style="margin-bottom: 2rem;">Bên Kiểm Soát Dữ Liệu thực hiện và lưu trữ Hồ sơ Đánh giá tác động chuyển dữ liệu cá nhân ra nước ngoài (TIA) theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 do Quốc hội nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành và Nghị định số 356/2025/NĐ-CP do Chính phủ nước Cộng hòa Xã hội Chủ nghĩa Việt Nam ban hành, gửi cho Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao (A05 — Bộ Công an nước Cộng hòa Xã hội Chủ nghĩa Việt Nam) trong thời hạn quy định.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">11. THAY ĐỔI CHÍNH SÁCH</h2>
+          <p style="margin-bottom: 2rem;">Bên Kiểm Soát Dữ Liệu có thể cập nhật chính sách này. Các thay đổi sẽ được thông báo qua Ứng dụng hoặc email. Việc tiếp tục sử dụng sau khi cập nhật đồng nghĩa với chấp nhận thay đổi.</p>
+
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #111;">12. LIÊN HỆ</h2>
+          <div style="background-color: #f9fafb; padding: 2rem; border-radius: 1rem; border: 1px solid #e5e7eb; margin-top: 1rem;">
+              <p style="margin-bottom: 1rem; font-weight: 600; font-size: 1.1rem; color: #111;">Bên Kiểm Soát Dữ Liệu Cá Nhân — Nhân sự bảo vệ dữ liệu cá nhân (DPO):</p>
+              <div style="margin-bottom: 1.5rem;">
+                  <p style="margin-bottom: 0.5rem;"><strong>Ông:</strong> Trần Tuấn Kiệt</p>
+                  <p style="margin-bottom: 0.5rem;"><strong>Số điện thoại:</strong> 0566665536</p>
+                  <p style="margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:vikavn.app@gmail.com" style="color: #ffb701; text-decoration: none;">vikavn.app@gmail.com</a></p>
+              </div>
+              <div style="padding-top: 1rem; border-top: 1px solid #e5e7eb;">
+                  <p style="font-size: 0.85rem; color: #6b7280; font-style: italic;">
+                      Người dùng có thể khiếu nại với Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao (A05 — Bộ Công an nước Cộng hòa Xã hội Chủ nghĩa Việt Nam), tổng đài <strong>1800 4040</strong>, nếu cho rằng quyền dữ liệu cá nhân của mình bị vi phạm.
+                  </p>
+              </div>
+          </div>
+      </div>
+    </main>
+    <footer class="site-footer" id="about">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand footer-brand" href="#top" aria-label="VIKA">
+            <img class="brand-logo" src="vika-wordmark.png" width="359" height="164" alt="VIKA" loading="lazy" />
+          </a>
+          <p>Huấn luyện viên cá nhân luôn trong túi áo của bạn.</p>
+          <p class="footer-small">&copy; 2026 VIKA. All rights reserved.</p>
+        </div>
+        <div>
+          <h3>Sản phẩm</h3>
+          <a href="#features">Tính năng</a>
+          <a href="#how">Cách hoạt động</a>
+          <a href="#kpi">Số liệu</a>
+        </div>
+        <div>
+          <h3>Công ty</h3>
+          <a href="#about">Về VIKA</a>
+          <a href="#blog">Blog</a>
+          <a href="mailto:hello@vikavn.app">Liên hệ</a>
+        </div>
+        <div>
+          <h3>Hỗ trợ</h3>
+          <a href="privacy-policy.html">Quyền riêng tư</a>
+          <a href="#download">Tải ứng dụng</a>
+          <a href="#demo">Xem demo</a>
+        </div>
+        <div>
+          <h3>Kết nối</h3>
+          <a href="#">Facebook</a>
+          <a href="#">TikTok</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">Dữ liệu của bạn luôn an toàn trên thiết bị của bạn. Xử lý hoàn toàn on-device.</div>
+      </div>
+    </footer>
+
+    <button class="floating-trust" type="button" aria-label="Cam kết bảo mật">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2.6 20 6v5.7c0 5-3.3 8.7-8 9.8-4.7-1.1-8-4.8-8-9.8V6l8-3.4Zm0 2.2L6 7.3v4.4c0 3.8 2.3 6.6 6 7.7 3.7-1.1 6-3.9 6-7.7V7.3l-6-2.5Zm3.8 4.7 1.4 1.4-5.8 5.8-3.2-3.2 1.4-1.4 1.8 1.8 4.4-4.4Z" />
+      </svg>
+    </button>
+    <a class="floating-chat" href="mailto:hello@vikavn.app" aria-label="Liên hệ VIKA">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M5 5h14v10H8.6L5 18.3V5Zm2 2v6.7l.8-.7H19V7H7Zm4 10h8v2h-8v-2Z" />
+      </svg>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
+</html>

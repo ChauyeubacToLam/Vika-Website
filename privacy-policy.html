@@ -49,8 +49,7 @@
         </nav>
 
         <div class="header-actions">
-          <a class="signin-link desktop-only" href="#login" style="background: transparent;">Đăng nhập</a>
-          <a class="button button-primary" href="#demo">Xem demo</a>
+          <a class="button button-primary" href="#experience-modal" data-modal-trigger="experience-modal">Trải nghiệm ngay</a>
           <button class="menu-toggle" type="button" data-menu-toggle aria-label="Mở menu" aria-expanded="false">
             <span></span>
             <span></span>
@@ -279,8 +278,7 @@
           </div>
           
           <div class="mobile-nav-actions">
-            <a class="button button-primary" href="#demo">Xem demo</a>
-            <a class="button button-secondary" href="#login" style="background: transparent;">Đăng nhập</a>
+            <a class="button button-primary" href="#experience-modal" data-modal-trigger="experience-modal">Trải nghiệm ngay</a>
           </div>
         </div>
       </nav>
@@ -436,7 +434,7 @@
           <h3>Hỗ trợ</h3>
           <a href="privacy-policy.html">Quyền riêng tư</a>
           <a href="#download">Tải ứng dụng</a>
-          <a href="#demo">Xem demo</a>
+          <a href="#experience-modal" data-modal-trigger="experience-modal">Trải nghiệm ngay</a>
         </div>
         <div>
           <h3>Kết nối</h3>
@@ -460,6 +458,29 @@
         <path d="M5 5h14v10H8.6L5 18.3V5Zm2 2v6.7l.8-.7H19V7H7Zm4 10h8v2h-8v-2Z" />
       </svg>
     </a>
+
+    <div class="modal-overlay" id="experience-modal" aria-hidden="true" data-modal>
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal-close" aria-label="Đóng" data-modal-close>&times;</button>
+        <h2 id="modal-title" style="margin-bottom: 16px; white-space: nowrap; font-size: clamp(24px, 8vw, 36px);">Trải nghiệm ngay</h2>
+        <p style="margin-bottom: 24px;">Vui lòng để lại thông tin để chúng tôi liên hệ.</p>
+        <form class="experience-form">
+          <div class="form-group">
+            <label for="exp-name">Họ và tên</label>
+            <input type="text" id="exp-name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="exp-email">Địa chỉ Email</label>
+            <input type="email" id="exp-email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="exp-phone">Số điện thoại</label>
+            <input type="tel" id="exp-phone" name="phone" required>
+          </div>
+          <button type="submit" class="button button-primary button-large" style="width: 100%;">Gửi thông tin</button>
+        </form>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

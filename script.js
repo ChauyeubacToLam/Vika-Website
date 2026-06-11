@@ -364,6 +364,14 @@ if (experienceForm) {
     const formData = new FormData(experienceForm);
     const data = Object.fromEntries(formData.entries());
 
+    if (data.phone) {
+      let phoneStr = data.phone.trim();
+      if (!phoneStr.startsWith('+')) {
+        phoneStr = '+84' + (phoneStr.startsWith('0') ? phoneStr.slice(1) : phoneStr);
+      }
+      data.phone = phoneStr;
+    }
+
     const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwnFA4HlzmH1irh6h99ygpOd9yUnlnsw6gi0s6bGBDQ6DCRYpVGwQjoyo4tnIzPK2um0Q/exec';
 
     try {
@@ -407,6 +415,209 @@ if (experienceForm) {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
       }, 3000);
+    }
+  });
+}
+
+// Number Counter Animation
+const counterElements = document.querySelectorAll('.counter');
+if (counterElements.length > 0 && "IntersectionObserver" in window) {
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const targetElement = entry.target;
+        const targetValue = parseFloat(targetElement.getAttribute('data-target'));
+        const suffix = targetElement.getAttribute('data-suffix') || '';
+        const duration = 2000; // ms
+        const isDecimal = targetValue % 1 !== 0;
+        
+        let startTime = null;
+        const animateCount = (timestamp) => {
+          if (!startTime) startTime = timestamp;
+          const progress = Math.min((timestamp - startTime) / duration, 1);
+          
+          // Easing: easeOutQuart
+          const easeProgress = 1 - Math.pow(1 - progress, 4);
+          const currentVal = easeProgress * targetValue;
+          
+          if (isDecimal) {
+            targetElement.textContent = currentVal.toFixed(1).replace('.', ',') + suffix;
+          } else {
+            targetElement.textContent = Math.floor(currentVal) + suffix;
+          }
+          
+          if (progress < 1) {
+            requestAnimationFrame(animateCount);
+          } else {
+            if (isDecimal) {
+              targetElement.textContent = targetValue.toFixed(1).replace('.', ',') + suffix;
+            } else {
+              targetElement.textContent = targetValue + suffix;
+            }
+          }
+        };
+        
+        requestAnimationFrame(animateCount);
+        observer.unobserve(targetElement); // Only animate once
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  counterElements.forEach(el => counterObserver.observe(el));
+}
+
+// Chatbox Integration
+const chatToggleBtn = document.getElementById('chat-toggle');
+const chatboxContainer = document.getElementById('chatbox');
+const chatCloseBtn = document.getElementById('chat-close');
+const chatFormView = document.getElementById('chat-form-view');
+const chatMessageView = document.getElementById('chat-message-view');
+const chatInfoForm = document.getElementById('chat-info-form');
+const chatMessagesContainer = document.getElementById('chat-messages');
+const chatSendForm = document.getElementById('chat-send-form');
+const chatInput = document.getElementById('chat-input');
+const chatSendBtn = document.getElementById('chat-send-btn');
+
+let chatUserInfo = {};
+
+// Open/Close Chatbox
+if (chatToggleBtn && chatboxContainer) {
+  chatToggleBtn.addEventListener('click', () => {
+    chatboxContainer.classList.add('active');
+  });
+
+  chatCloseBtn.addEventListener('click', () => {
+    chatboxContainer.classList.remove('active');
+  });
+}
+
+function createMessageElement(text, sender) {
+  const msgDiv = document.createElement('div');
+  msgDiv.className = `chat-message ${sender}`;
+  msgDiv.innerHTML = text; 
+  return msgDiv;
+}
+
+function showTypingIndicator() {
+  const indicator = document.createElement('div');
+  indicator.className = 'typing-indicator';
+  indicator.id = 'typing-indicator';
+  indicator.innerHTML = '<span></span><span></span><span></span>';
+  chatMessagesContainer.appendChild(indicator);
+  chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+  return indicator;
+}
+
+function removeTypingIndicator() {
+  const indicator = document.getElementById('typing-indicator');
+  if (indicator) indicator.remove();
+}
+
+async function startAutomatedWelcome() {
+  // Messages to send
+  const messages = [
+    `Xin chào anh/chị <b>${chatUserInfo.name}</b>! Em là trợ lý ảo của VIKA.`,
+    `VIKA là ứng dụng huấn luyện viên AI cá nhân, giúp anh/chị tập luyện đúng tư thế và hiệu quả ngay tại nhà.`,
+    `Anh/chị đang có câu hỏi hay cần hỗ trợ gì từ VIKA ạ?`
+  ];
+
+  for (let i = 0; i < messages.length; i++) {
+    showTypingIndicator();
+    // Simulate typing delay
+    await new Promise(resolve => setTimeout(resolve, 1200 + Math.random() * 800));
+    removeTypingIndicator();
+    
+    const msgEl = createMessageElement(messages[i], 'bot');
+    chatMessagesContainer.appendChild(msgEl);
+    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+  }
+
+  // Enable input after welcome messages
+  if(chatInput) chatInput.disabled = false;
+  if(chatSendBtn) chatSendBtn.disabled = false;
+  if(chatInput) chatInput.focus();
+}
+
+// Handle Info Form Submit
+if (chatInfoForm) {
+  chatInfoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let rawPhone = document.getElementById('chat-phone').value.trim();
+    if (!rawPhone.startsWith('+')) {
+      rawPhone = '+84' + (rawPhone.startsWith('0') ? rawPhone.slice(1) : rawPhone);
+    }
+
+    chatUserInfo = {
+      name: document.getElementById('chat-name').value,
+      phone: rawPhone,
+      email: document.getElementById('chat-email').value,
+    };
+
+    chatFormView.style.display = 'none';
+    chatMessageView.style.display = 'flex';
+    
+    startAutomatedWelcome();
+  });
+}
+
+// Handle Sending Message to Google Sheets
+if (chatSendForm) {
+  chatSendForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const messageText = chatInput.value.trim();
+    if (!messageText) return;
+
+    // Add user message to UI
+    const userMsgEl = createMessageElement(messageText, 'user');
+    chatMessagesContainer.appendChild(userMsgEl);
+    chatInput.value = '';
+    chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+
+    // Disable input while sending
+    chatInput.disabled = true;
+    chatSendBtn.disabled = true;
+    showTypingIndicator();
+
+    const dataToSend = {
+      ...chatUserInfo,
+      message: messageText
+    };
+
+    // URL này sẽ được thay thế sau khi tạo Apps Script
+    const CHAT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbycj6JbUAkJCmbZDa9VXJ-_tM60mIiv6918DSdyH8gi3CSfbcRfm9RrmhecNwxj4VVyJw/exec'; 
+
+    try {
+      if (CHAT_WEB_APP_URL) {
+        await fetch(CHAT_WEB_APP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain',
+          },
+          body: JSON.stringify(dataToSend),
+        });
+      }
+
+      // Simulate network delay for bot reply
+      setTimeout(() => {
+        removeTypingIndicator();
+        const replyMsg = createMessageElement('Cảm ơn anh/chị đã gửi thông tin. Đội ngũ hỗ trợ của VIKA sẽ liên lạc với anh/chị trong thời gian sớm nhất!', 'bot');
+        chatMessagesContainer.appendChild(replyMsg);
+        chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+        
+        chatInput.disabled = false;
+        chatSendBtn.disabled = false;
+      }, 1000);
+
+    } catch (error) {
+      console.error('Lỗi khi gửi tin nhắn:', error);
+      removeTypingIndicator();
+      const replyMsg = createMessageElement('Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại sau.', 'bot');
+      chatMessagesContainer.appendChild(replyMsg);
+      chatMessagesContainer.scrollTop = chatMessagesContainer.scrollHeight;
+      
+      chatInput.disabled = false;
+      chatSendBtn.disabled = false;
     }
   });
 }

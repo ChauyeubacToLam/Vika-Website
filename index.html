@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="preload" href="vika-wordmark-yellow.png" as="image" />
+  <link rel="preload" href="vika-wordmark-blacktext.png" as="image" />
   <link rel="stylesheet" href="styles.css?v=1.1" />
 </head>
 
@@ -23,7 +23,7 @@
   <header class="site-header" data-header>
     <div class="header-inner">
       <a class="brand" href="index.html#top" aria-label="VIKA">
-        <img class="brand-logo" src="vika-wordmark-yellow.png" width="359" height="164" alt="VIKA" decoding="async" />
+        <img class="brand-logo" src="vika-wordmark-blacktext.png" width="359" height="164" alt="VIKA" decoding="async" />
       </a>
 
       <nav class="desktop-nav" aria-label="Điều hướng chính">
@@ -379,21 +379,21 @@
       <div class="container">
         <div class="section-heading centered" data-animate>
           <p class="eyebrow">Dữ liệu nghiên cứu</p>
-          <h2>Được xây dựng từ vấn đề thật của người tập tại Việt Nam.</h2>
+          <h2 style="max-width: 100%;"><span style="white-space: nowrap;">Được xây dựng từ vấn đề thật</span><br><span style="white-space: nowrap;">của người tập tại Việt Nam.</span></h2>
           <p style="font-size: 14px; white-space: nowrap;">Khảo sát 1000+ người tập tại Hà Nội cho thấy rào cản lớn nhất
             không phải là lười, mà là thiếu hướng dẫn đúng lúc.</p>
         </div>
         <div class="stats-grid" data-animate>
           <article class="stat-card">
-            <strong>70%</strong>
+            <strong class="counter" data-target="70" data-suffix="%">0%</strong>
             <p>Người dùng bỏ app thể hình trong 100 ngày đầu vì thiếu hướng dẫn bài bản.</p>
           </article>
           <article class="stat-card">
-            <strong>63,5%</strong>
+            <strong class="counter" data-target="63.5" data-suffix="%">0%</strong>
             <p>Người tập không chắc mình đang thực hiện đúng kỹ thuật hay không.</p>
           </article>
           <article class="stat-card">
-            <strong>72,6%</strong>
+            <strong class="counter" data-target="72.6" data-suffix="%">0%</strong>
             <p>Người được hỏi muốn có lộ trình tập chi tiết và cá nhân hóa.</p>
           </article>
         </div>
@@ -641,7 +641,7 @@
       <div class="container">
         <div class="section-heading" data-animate>
           <p class="eyebrow">Người dùng beta</p>
-          <h2>Họ đã tập cùng VIKA và thấy mình tiến bộ rõ hơn.</h2>
+          <h2 style="font-family: 'Be Vietnam Pro', sans-serif; font-weight: 600; text-transform: none;">Phản hồi tích cực từ những người dùng đầu tiên của VIKA</h2>
         </div>
 
         <div class="carousel" data-carousel data-animate>
@@ -650,21 +650,80 @@
             <button class="icon-button" type="button" data-carousel-next aria-label="Xem nhận xét sau">›</button>
           </div>
           <div class="carousel-track" data-carousel-track>
-            <article class="testimonial-card">
-              <p>"Lần đầu tiên tôi tự tập mà biết mình đang sai ở đâu. Cảm giác không còn mơ hồ nữa."</p>
-              <footer>N.T.H., 28 tuổi, Hà Nội</footer>
+            <article class="testimonial-card rich-card">
+              <div class="card-image-header">
+                <img src="Nguyễn Thị Ánh Thơ.jpg" alt="Nguyễn Thị Ánh Thơ">
+              </div>
+              <div class="card-content">
+                <p>"Mình khá ấn tượng với khả năng Vika sẽ trở thành cầu nối giúp mọi người tích hợp công nghệ vào quá trình rèn luyện thể chất một cách tự nhiên, từ đó tạo động lực duy trì lối sống năng động và lành mạnh hơn mỗi ngày."</p>
+                <footer>
+                  <strong>Chị Nguyễn Thị Ánh Thơ</strong><br>
+                  <span>Tiến sĩ, Giảng viên</span>
+                </footer>
+              </div>
             </article>
-            <article class="testimonial-card">
-              <p>"Trước đây mình tập theo YouTube nhưng không biết có đúng không. Sau 3 tuần, điểm form tăng rõ."</p>
-              <footer>T.M.K., 21 tuổi, TP.HCM</footer>
+
+            <article class="testimonial-card rich-card">
+              <div class="card-image-header">
+                <img src="Đàm Gia Huy.jpg" alt="Đàm Quang Huy">
+              </div>
+              <div class="card-content">
+                <p>"Mình ấn tượng nhất ở khả năng ứng dụng trí tuệ nhân tạo trong việc mô phỏng bộ xương người vào việc chỉnh form khi tập luyện. Và đây cũng là công nghệ mình và nhiều người mong đợi cũng như hoài nghi nhất."</p>
+                <footer>
+                  <strong>Anh Đàm Quang Huy</strong><br>
+                  <span>Sinh viên</span>
+                </footer>
+              </div>
             </article>
-            <article class="testimonial-card">
-              <p>"VIKA giải thích rõ từng động tác sai ở đâu, vì sao và nên sửa như thế nào."</p>
-              <footer>P.Q.A., 34 tuổi, Đà Nẵng</footer>
+
+            <article class="testimonial-card rich-card">
+              <div class="card-image-header">
+                <img src="Nguyễn Thị Thuỳ Linh.jpg" alt="Nguyễn Thị Thùy Linh">
+              </div>
+              <div class="card-content">
+                <p>"Chị khá ấn tượng với mô hình huấn luyện viên AI tại nhà. Vika giúp chị tiết kiệm thời gian, vừa chăm em bé, vừa có thời gian tập luyện lấy lại vóc dáng. Nếu Vika được hoàn thiện và đưa vào sử dụng, chị nghĩ đây sẽ là giải pháp giúp tiết kiệm chi phí tập luyện và chăm sóc sức khỏe."</p>
+                <footer>
+                  <strong>Chị Nguyễn Thị Thùy Linh</strong><br>
+                  <span>Nhân viên văn phòng</span>
+                </footer>
+              </div>
             </article>
-            <article class="testimonial-card case-study-card">
-              <p>Sau 30 ngày dùng VIKA, Minh duy trì chuỗi tập đều và cải thiện điểm form từ 58 lên 91.</p>
-              <footer>Case study: từ đau lưng kinh niên đến tập đều mỗi ngày</footer>
+
+            <article class="testimonial-card rich-card">
+              <div class="card-image-header">
+                <img src="Trương Minh Hà.jpg" alt="Trương Minh Hà">
+              </div>
+              <div class="card-content">
+                <p>"Mình khá thích thú ở tính tăng có giọng nói AI theo thời gian thực khi tập. Nó có lẽ không chỉ tăng sự hào hứng khi tự tập luyện một mình, mà còn giúp mấy chàng sinh viên Y quạnh hiu một mình quanh năm đỡ cảm thấy cô đơn hơn. Mình mong trong tương lai Vika có thể phát triển thành tương tác giọng nói hai chiều để tăng trải nghiệm sử dụng."</p>
+                <footer>
+                  <strong>Anh Trương Minh Hà</strong><br>
+                  <span>Trường Đại học Y Hà Nội</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="testimonial-card rich-card">
+              <div class="card-image-header">
+                <img src="Vũ Thị Diệu Linh.jpg" alt="Vũ Thị Diệu Linh">
+              </div>
+              <div class="card-content">
+                <p>"Theo mình, Vika sẽ phù hợp với những người bận rộn, người mới bắt đầu tập luyện, dân văn phòng hoặc bất kỳ ai muốn rèn luyện sức khỏe tại nhà một cách thuận tiện."</p>
+                <footer>
+                  <strong>Chị Vũ Thị Diệu Linh</strong>
+                </footer>
+              </div>
+            </article>
+
+            <article class="testimonial-card rich-card">
+              <div class="card-image-header">
+                <img src="Hoàng Thị Tú Uyên.jpeg" alt="Hoàng Thị Tú Uyên">
+              </div>
+              <div class="card-content">
+                <p>"Mình thấy đây là một ý tưởng rất hay vì hiện tại người trẻ hay người già cũng có xu hướng tập tại nhà nhiều. Mọi người thường rất bận nên khó giành thời gian tới phòng gym. Nếu mô hình này phát triển tốt sẽ rất được ủng hộ, vừa giúp cắt giảm chi phí, hỗ trợ cho người hướng nội hoặc các nhóm người ít tiếp xúc xã hội/tiếp xúc cá nhân vì vấn đề tính cách hoặc tôn giáo."</p>
+                <footer>
+                  <strong>Chị Hoàng Thị Tú Uyên</strong>
+                </footer>
+              </div>
             </article>
           </div>
           <div class="carousel-dots" data-carousel-dots aria-label="Chọn nhận xét"></div>
@@ -720,7 +779,7 @@
     <div class="container footer-grid">
       <div>
         <a class="brand footer-brand" href="index.html#top" aria-label="VIKA">
-          <img class="brand-logo" src="vika-wordmark-yellow.png" width="359" height="164" alt="VIKA" loading="lazy" />
+          <img class="brand-logo" src="vika-wordmark-blacktext.png" width="359" height="164" alt="VIKA" loading="lazy" />
         </a>
         <p>Huấn luyện viên cá nhân luôn trong túi áo của bạn.</p>
         <p class="footer-small">&copy; 2026 VIKA. All rights reserved.</p>
@@ -755,17 +814,55 @@
     </div>
   </footer>
 
-  <button class="floating-trust" type="button" aria-label="Cam kết bảo mật">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path
-        d="M12 2.6 20 6v5.7c0 5-3.3 8.7-8 9.8-4.7-1.1-8-4.8-8-9.8V6l8-3.4Zm0 2.2L6 7.3v4.4c0 3.8 2.3 6.6 6 7.7 3.7-1.1 6-3.9 6-7.7V7.3l-6-2.5Zm3.8 4.7 1.4 1.4-5.8 5.8-3.2-3.2 1.4-1.4 1.8 1.8 4.4-4.4Z" />
-    </svg>
-  </button>
-  <a class="floating-chat" href="mailto:hello@vikavn.app" aria-label="Liên hệ VIKA">
+
+  <button class="floating-chat" type="button" aria-label="Liên hệ VIKA" id="chat-toggle">
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M5 5h14v10H8.6L5 18.3V5Zm2 2v6.7l.8-.7H19V7H7Zm4 10h8v2h-8v-2Z" />
     </svg>
-  </a>
+  </button>
+
+  <div class="chatbox-container" id="chatbox">
+    <div class="chatbox-header">
+      <h3>Giải đáp thắc mắc</h3>
+      <button class="chatbox-close" id="chat-close" aria-label="Đóng chat">&times;</button>
+    </div>
+    
+    <div class="chatbox-body">
+      <!-- Màn hình 1: Nhập thông tin -->
+      <div class="chatbox-form-view" id="chat-form-view">
+        <p>Vui lòng để lại thông tin để chúng tôi hỗ trợ anh/chị tốt nhất.</p>
+        <form id="chat-info-form">
+          <div class="form-group">
+            <input type="text" id="chat-name" name="name" placeholder="Họ và tên *" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="chat-phone" name="phone" placeholder="Số điện thoại *" required>
+          </div>
+          <div class="form-group">
+            <input type="email" id="chat-email" name="email" placeholder="Email *" required>
+          </div>
+          <button type="submit" class="button button-primary" style="width: 100%;">Bắt đầu chat</button>
+        </form>
+      </div>
+
+      <!-- Màn hình 2: Chat -->
+      <div class="chatbox-chat-view" id="chat-message-view" style="display: none;">
+        <div class="chat-messages" id="chat-messages">
+          <!-- Tin nhắn sẽ được append vào đây -->
+        </div>
+        <div class="chat-input-area">
+          <form id="chat-send-form">
+            <input type="text" id="chat-input" placeholder="Nhập câu hỏi của bạn..." autocomplete="off" required disabled>
+            <button type="submit" aria-label="Gửi tin nhắn" id="chat-send-btn" disabled>
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="modal-overlay" id="experience-modal" aria-hidden="true" data-modal>
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">

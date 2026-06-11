@@ -23,7 +23,8 @@
   <header class="site-header" data-header>
     <div class="header-inner">
       <a class="brand" href="index.html#top" aria-label="VIKA">
-        <img class="brand-logo" src="vika-wordmark-blacktext.png" width="359" height="164" alt="VIKA" decoding="async" />
+        <img class="brand-logo" src="vika-wordmark-blacktext.png" width="359" height="164" alt="VIKA"
+          decoding="async" />
       </a>
 
       <nav class="desktop-nav" aria-label="Điều hướng chính">
@@ -379,7 +380,8 @@
       <div class="container">
         <div class="section-heading centered" data-animate>
           <p class="eyebrow">Dữ liệu nghiên cứu</p>
-          <h2 style="max-width: 100%;"><span class="nowrap-desktop">Được xây dựng từ vấn đề thật</span><br><span class="nowrap-desktop">của người tập tại Việt Nam.</span></h2>
+          <h2 style="max-width: 100%;"><span class="nowrap-desktop">Được xây dựng từ vấn đề thật</span><br><span
+              class="nowrap-desktop">của người tập tại Việt Nam.</span></h2>
           <p style="font-size: 14px;">Khảo sát 1000+ người tập tại Hà Nội cho thấy rào cản lớn nhất
             không phải là lười, mà là thiếu hướng dẫn đúng lúc.</p>
         </div>
@@ -499,24 +501,9 @@
             tiến bộ thật của bạn.
           </p>
         </div>
-        <div class="coach-panel" data-animate>
-          <div class="coach-top">
-            <span>Squat</span>
-            <span>Góc gối 92°</span>
-            <span>Giọng Việt</span>
-          </div>
-          <div class="motion-map" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="coach-result">
-            <strong>Phản hồi tức thì</strong>
-            <p>Biết mình sai ngay trong lúc tập, không phải sau khi đã bị đau.</p>
-          </div>
+        <div class="coach-image-wrapper" data-animate style="margin-top: 40px; text-align: center;">
+          <img src="ai-coach-demo.png" alt="Công nghệ AI chỉnh dáng theo thời gian thực"
+            style="max-width: 100%; height: auto; border-radius: var(--radius-card); box-shadow: 0 20px 40px rgba(0,0,0,0.08);">
         </div>
       </div>
     </section>
@@ -578,33 +565,6 @@
       </div>
     </section>
 
-    <section class="section kpi-section" id="kpi">
-      <div class="container">
-        <div class="section-heading centered" data-animate>
-          <p class="eyebrow">Tác động</p>
-          <h2>Số liệu nói thay lời.</h2>
-        </div>
-        <div class="kpi-grid" data-animate>
-          <article>
-            <strong>1/10</strong>
-            <p>Chi phí so với thuê PT cá nhân, nhưng trải nghiệm luôn sẵn sàng 24/7.</p>
-          </article>
-          <article>
-            <strong>33 điểm</strong>
-            <p>Điểm cơ thể được AI phân tích trong từng động tác tập luyện.</p>
-          </article>
-          <article>
-            <strong>15 phút</strong>
-            <p>Đủ để hoàn thành một buổi tập hiệu quả cho người bận rộn.</p>
-          </article>
-          <article>
-            <strong>24/7</strong>
-            <p>Luôn có hướng dẫn khi bạn muốn tập, không phụ thuộc lịch của ai khác.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="section how-section" id="how">
       <div class="container">
         <div class="section-heading" data-animate>
@@ -612,28 +572,39 @@
           <h2>Bắt đầu chỉ trong 3 bước.</h2>
           <p>Không cần thiết bị đặc biệt. Không cần kinh nghiệm. Chỉ cần điện thoại và một khoảng trống nhỏ.</p>
         </div>
-        <div class="steps-grid" data-animate>
-          <article class="step-card">
+        <div class="steps-grid" data-animate style="align-items: flex-start;">
+          <article class="step-card" style="display: flex; flex-direction: column; gap: 16px;">
             <span>1</span>
-            <h3>Nói cho VIKA biết bạn là ai</h3>
-            <p>Chọn mục tiêu, thể trạng hiện tại, thời gian rảnh và thiết bị có sẵn.</p>
+            <div class="step-text-content">
+              <h3 style="margin: 0; min-height: 130px;">Nói cho VIKA biết bạn là ai</h3>
+              <div class="step-desc-wrapper">
+                <p>Chọn mục tiêu, thể trạng hiện tại, thời gian rảnh và thiết bị có sẵn.</p>
+              </div>
+            </div>
+            <img class="step-box-img" src="Box%201.png" alt="Bước 1" style="object-position: left;">
           </article>
-          <article class="step-card">
+          <article class="step-card" style="display: flex; flex-direction: column; gap: 16px;">
             <span>2</span>
-            <h3>Đặt điện thoại và bắt đầu tập</h3>
-            <p>AI theo dõi buổi tập, đếm rep và chỉnh form qua phản hồi bằng tiếng Việt.</p>
+            <div class="step-text-content">
+              <h3 style="margin: 0; min-height: 130px;">Đặt điện thoại và bắt đầu tập</h3>
+              <div class="step-desc-wrapper">
+                <p>Đặt điện thoại dựng vào tường hoặc bất cứ đâu, AI theo dõi buổi tập, đếm rep và chỉnh form qua phản hồi bằng tiếng Việt.</p>
+              </div>
+            </div>
+            <img class="step-box-img" src="Box%202.png" alt="Bước 2">
           </article>
-          <article class="step-card">
+          <article class="step-card" style="display: flex; flex-direction: column; gap: 16px;">
             <span>3</span>
-            <h3>Xem kết quả và cải thiện từng ngày</h3>
-            <p>Nhận điểm tổng kết, danh sách lỗi cần sửa và gợi ý buổi tập kế tiếp.</p>
+            <div class="step-text-content">
+              <h3 style="margin: 0; min-height: 130px;">Xem kết quả và cải thiện từng ngày</h3>
+              <div class="step-desc-wrapper">
+                <p>Nhận điểm tổng kết, danh sách lỗi cần sửa và gợi ý buổi tập kế tiếp.</p>
+              </div>
+            </div>
+            <img class="step-box-img" src="Box%203.png" alt="Bước 3">
           </article>
         </div>
-        <div class="privacy-callout" id="privacy" data-animate>
-          <strong>Dữ liệu riêng tư theo mặc định.</strong>
-          <p>Toàn bộ phân tích chuyển động xử lý ngay trên thiết bị. Video không lưu trữ và không rời khỏi máy của bạn.
-          </p>
-        </div>
+
       </div>
     </section>
 
@@ -641,7 +612,8 @@
       <div class="container">
         <div class="section-heading" data-animate>
           <p class="eyebrow">Người dùng beta</p>
-          <h2 style="font-family: 'Be Vietnam Pro', sans-serif; font-weight: 600; text-transform: none;">Phản hồi tích cực từ những người dùng đầu tiên của VIKA</h2>
+          <h2 style="font-family: 'Be Vietnam Pro', sans-serif; font-weight: 600; text-transform: none;">Phản hồi tích
+            cực từ những người dùng đầu tiên của VIKA</h2>
         </div>
 
         <div class="carousel" data-carousel data-animate>
@@ -655,7 +627,9 @@
                 <img src="Nguyễn Thị Ánh Thơ.jpg" alt="Nguyễn Thị Ánh Thơ">
               </div>
               <div class="card-content">
-                <p>"Mình khá ấn tượng với khả năng Vika sẽ trở thành cầu nối giúp mọi người tích hợp công nghệ vào quá trình rèn luyện thể chất một cách tự nhiên, từ đó tạo động lực duy trì lối sống năng động và lành mạnh hơn mỗi ngày."</p>
+                <p>"Mình khá ấn tượng với khả năng Vika sẽ trở thành cầu nối giúp mọi người tích hợp công nghệ vào quá
+                  trình rèn luyện thể chất một cách tự nhiên, từ đó tạo động lực duy trì lối sống năng động và lành mạnh
+                  hơn mỗi ngày."</p>
                 <footer>
                   <strong>Chị Nguyễn Thị Ánh Thơ</strong><br>
                   <span>Tiến sĩ, Giảng viên</span>
@@ -668,7 +642,9 @@
                 <img src="Đàm Gia Huy.jpg" alt="Đàm Quang Huy" style="object-position: top;">
               </div>
               <div class="card-content">
-                <p>"Mình ấn tượng nhất ở khả năng ứng dụng trí tuệ nhân tạo trong việc mô phỏng bộ xương người vào việc chỉnh form khi tập luyện. Và đây cũng là công nghệ mình và nhiều người mong đợi cũng như hoài nghi nhất."</p>
+                <p>"Mình ấn tượng nhất ở khả năng ứng dụng trí tuệ nhân tạo trong việc mô phỏng bộ xương người vào việc
+                  chỉnh form khi tập luyện. Và đây cũng là công nghệ mình và nhiều người mong đợi cũng như hoài nghi
+                  nhất."</p>
                 <footer>
                   <strong>Anh Đàm Quang Huy</strong><br>
                   <span>Sinh viên</span>
@@ -681,7 +657,9 @@
                 <img src="Nguyễn Thị Thuỳ Linh.jpg" alt="Nguyễn Thị Thùy Linh">
               </div>
               <div class="card-content">
-                <p>"Chị khá ấn tượng với mô hình huấn luyện viên AI tại nhà. Vika giúp chị tiết kiệm thời gian, vừa chăm em bé, vừa có thời gian tập luyện lấy lại vóc dáng. Nếu Vika được hoàn thiện và đưa vào sử dụng, chị nghĩ đây sẽ là giải pháp giúp tiết kiệm chi phí tập luyện và chăm sóc sức khỏe."</p>
+                <p>"Chị khá ấn tượng với mô hình huấn luyện viên AI tại nhà. Vika giúp chị tiết kiệm thời gian, vừa chăm
+                  em bé, vừa có thời gian tập luyện lấy lại vóc dáng. Nếu Vika được hoàn thiện và đưa vào sử dụng, chị
+                  nghĩ đây sẽ là giải pháp giúp tiết kiệm chi phí tập luyện và chăm sóc sức khỏe."</p>
                 <footer>
                   <strong>Chị Nguyễn Thị Thùy Linh</strong><br>
                   <span>Nhân viên văn phòng</span>
@@ -694,7 +672,10 @@
                 <img src="Trương Minh Hà.jpg" alt="Trương Minh Hà">
               </div>
               <div class="card-content">
-                <p>"Mình khá thích thú ở tính tăng có giọng nói AI theo thời gian thực khi tập. Nó có lẽ không chỉ tăng sự hào hứng khi tự tập luyện một mình, mà còn giúp mấy chàng sinh viên Y quạnh hiu một mình quanh năm đỡ cảm thấy cô đơn hơn. Mình mong trong tương lai Vika có thể phát triển thành tương tác giọng nói hai chiều để tăng trải nghiệm sử dụng."</p>
+                <p>"Mình khá thích thú ở tính tăng có giọng nói AI theo thời gian thực khi tập. Nó có lẽ không chỉ tăng
+                  sự hào hứng khi tự tập luyện một mình, mà còn giúp mấy chàng sinh viên Y quạnh hiu một mình quanh năm
+                  đỡ cảm thấy cô đơn hơn. Mình mong trong tương lai Vika có thể phát triển thành tương tác giọng nói hai
+                  chiều để tăng trải nghiệm sử dụng."</p>
                 <footer>
                   <strong>Anh Trương Minh Hà</strong><br>
                   <span>Sinh viên</span>
@@ -707,7 +688,8 @@
                 <img src="Vũ Thị Diệu Linh.jpg" alt="Vũ Thị Diệu Linh" style="object-position: top;">
               </div>
               <div class="card-content">
-                <p>"Theo mình, Vika sẽ phù hợp với những người bận rộn, người mới bắt đầu tập luyện, dân văn phòng hoặc bất kỳ ai muốn rèn luyện sức khỏe tại nhà một cách thuận tiện."</p>
+                <p>"Theo mình, Vika sẽ phù hợp với những người bận rộn, người mới bắt đầu tập luyện, dân văn phòng hoặc
+                  bất kỳ ai muốn rèn luyện sức khỏe tại nhà một cách thuận tiện."</p>
                 <footer>
                   <strong>Chị Vũ Thị Diệu Linh</strong><br>
                   <span>Sinh viên</span>
@@ -720,7 +702,10 @@
                 <img src="Hoàng Thị Tú Uyên.jpeg" alt="Hoàng Thị Tú Uyên">
               </div>
               <div class="card-content">
-                <p>"Mình thấy đây là một ý tưởng rất hay vì hiện tại người trẻ hay người già cũng có xu hướng tập tại nhà nhiều. Mọi người thường rất bận nên khó giành thời gian tới phòng gym. Nếu mô hình này phát triển tốt sẽ rất được ủng hộ, vừa giúp cắt giảm chi phí, hỗ trợ cho người hướng nội hoặc các nhóm người ít tiếp xúc xã hội/tiếp xúc cá nhân vì vấn đề tính cách hoặc tôn giáo."</p>
+                <p>"Mình thấy đây là một ý tưởng rất hay vì hiện tại người trẻ hay người già cũng có xu hướng tập tại
+                  nhà nhiều. Mọi người thường rất bận nên khó giành thời gian tới phòng gym. Nếu mô hình này phát triển
+                  tốt sẽ rất được ủng hộ, vừa giúp cắt giảm chi phí, hỗ trợ cho người hướng nội hoặc các nhóm người ít
+                  tiếp xúc xã hội/tiếp xúc cá nhân vì vấn đề tính cách hoặc tôn giáo."</p>
                 <footer>
                   <strong>Chị Hoàng Thị Tú Uyên</strong><br>
                   <span>Du học sinh</span>
@@ -781,16 +766,16 @@
     <div class="container footer-grid">
       <div>
         <a class="brand footer-brand" href="index.html#top" aria-label="VIKA">
-          <img class="brand-logo" src="vika-wordmark-blacktext.png" width="359" height="164" alt="VIKA" loading="lazy" />
+          <img class="brand-logo" src="vika-wordmark-blacktext.png" width="359" height="164" alt="VIKA"
+            loading="lazy" />
         </a>
-        <p>Huấn luyện viên cá nhân luôn trong túi áo của bạn.</p>
+        <p>Huấn luyện viên AI tại nhà</p>
         <p class="footer-small">&copy; 2026 VIKA. All rights reserved.</p>
       </div>
       <div>
         <h3>Sản phẩm</h3>
         <a href="#features">Tính năng</a>
         <a href="#how">Cách hoạt động</a>
-        <a href="#kpi">Số liệu</a>
       </div>
       <div>
         <h3>Công ty</h3>
@@ -801,14 +786,11 @@
       <div>
         <h3>Hỗ trợ</h3>
         <a href="privacy-policy.html">Quyền riêng tư</a>
-        <a href="#download">Tải ứng dụng</a>
         <a href="#experience-modal" data-modal-trigger="experience-modal">Trải nghiệm ngay</a>
       </div>
       <div>
         <h3>Kết nối</h3>
         <a href="https://web.facebook.com/profile.php?id=61590066156123&locale=vi_VN">Facebook</a>
-        <a href="#">TikTok</a>
-        <a href="#">Instagram</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -828,7 +810,7 @@
       <h3>Giải đáp thắc mắc</h3>
       <button class="chatbox-close" id="chat-close" aria-label="Đóng chat">&times;</button>
     </div>
-    
+
     <div class="chatbox-body">
       <!-- Màn hình 1: Nhập thông tin -->
       <div class="chatbox-form-view" id="chat-form-view">
@@ -854,10 +836,11 @@
         </div>
         <div class="chat-input-area">
           <form id="chat-send-form">
-            <input type="text" id="chat-input" placeholder="Nhập câu hỏi của bạn..." autocomplete="off" required disabled>
+            <input type="text" id="chat-input" placeholder="Nhập câu hỏi của bạn..." autocomplete="off" required
+              disabled>
             <button type="submit" aria-label="Gửi tin nhắn" id="chat-send-btn" disabled>
               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
               </svg>
             </button>
           </form>

@@ -702,7 +702,11 @@ p {
   font-weight: 500;
 }
 
-.solution-section,
+.solution-section {
+  background: var(--color-soft);
+  color: var(--color-ink);
+}
+
 .testimonials-section,
 .final-cta-section {
   background: var(--color-bg);
@@ -2112,4 +2116,41 @@ p {
   .chatbox-body {
     height: 70vh;
   }
+}
+
+.step-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.step-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+.step-desc-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease;
+}
+.step-desc-wrapper p {
+  overflow: hidden;
+  opacity: 0;
+  margin: 0;
+  padding-top: 0;
+  transition: opacity 0.3s ease, padding-top 0.3s ease;
+  font-weight: normal;
+  color: var(--color-muted);
+}
+.step-card:hover .step-desc-wrapper {
+  grid-template-rows: 1fr;
+}
+.step-card:hover .step-desc-wrapper p {
+  opacity: 1;
+  padding-top: 8px;
+}
+.step-box-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  margin-top: auto;
+  border-radius: 12px;
 }

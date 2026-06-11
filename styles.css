@@ -471,6 +471,7 @@ p {
   padding-inline: var(--margin);
   margin-inline: auto;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 68px;
   min-width: 0;
 }

@@ -1025,6 +1025,7 @@ p {
 
 .card-content p {
   font-size: 15px;
+  font-weight: 400;
   line-height: 1.6;
   color: var(--color-ink);
   margin-bottom: 24px;

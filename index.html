@@ -67,6 +67,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
@@ -937,11 +938,11 @@
         </div>
         <div class="form-group">
           <label for="exp-email">Địa chỉ Email</label>
-          <input type="email" id="exp-email" name="email" required>
+          <input type="email" id="exp-email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Vui lòng nhập địa chỉ email hợp lệ (ví dụ: ten@email.com)" required>
         </div>
         <div class="form-group">
           <label for="exp-phone">Số điện thoại</label>
-          <input type="tel" id="exp-phone" name="phone" required>
+          <input type="tel" id="exp-phone" name="phone" minlength="10" pattern="[0-9\-\+\s]{10,}" title="Số điện thoại phải có ít nhất 10 chữ số" required>
         </div>
         <div class="form-group">
           <label for="exp-code">Mã mời</label>
@@ -953,22 +954,40 @@
   </div>
 
   <div class="modal-overlay" id="thankyou-modal" aria-hidden="true" data-modal>
-    <div class="modal-content text-center" role="dialog" aria-modal="true" aria-labelledby="thankyou-title" style="padding: 40px 24px; text-align: center;">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="thankyou-title" style="padding: 24px 20px; max-width: 550px; max-height: 95vh; overflow-y: auto; border: 4px solid #FFD700; border-radius: 16px;">
       <button class="modal-close" aria-label="Đóng" data-modal-close>&times;</button>
-      <div class="success-checkmark">
-        <div class="check-icon">
-          <span class="icon-line line-tip"></span>
-          <span class="icon-line line-long"></span>
-          <div class="icon-circle"></div>
-          <div class="icon-fix"></div>
+
+      <div class="thank-you-letter" style="text-align: left; color: var(--color-ink); line-height: 1.45; font-size: 14px;">
+        <p style="margin-bottom: 10px;">Thân gửi Anh/Chị <strong class="user-name-display" style="font-weight: 800; color: #000; font-size: 15px;"></strong>,</p>
+        
+        <p style="margin-bottom: 10px;">Lời đầu tiên, <strong style="color: #000;">Vika: Huấn luyện viên AI tại nhà</strong> xin gửi lời cảm ơn chân thành đến Anh/Chị <strong class="user-name-display" style="font-weight: 800; color: #000; font-size: 15px;"></strong> vì đã đồng hành và hỗ trợ cho <strong style="color: #000;">Vika</strong> trong chương trình trải nghiệm sớm của ứng dụng.</p>
+        
+        <p style="margin-bottom: 10px; font-weight: 800; color: #4CAF50; font-size: 15px; text-align: center; text-transform: uppercase;">Chúc mừng Anh/Chị đã đăng ký thành công<br>chương trình trải nghiệm sớm VIKA!</p>
+        
+        <p style="margin-bottom: 10px;">Sự quan tâm và sẵn sàng đồng hành của Anh/Chị là nguồn động lực to lớn đối với đội ngũ phát triển trong quá trình hoàn thiện <strong style="color: #000;">Vika</strong> - ứng dụng hỗ trợ tập luyện ứng dụng công nghệ AI, hướng đến việc mang lại trải nghiệm tập luyện cá nhân hóa, thuận tiện và dễ tiếp cận hơn cho mọi người.</p>
+        
+        <p style="margin-bottom: 10px;">Hiện tại, <strong style="color: #000;">Vika</strong> đang tiến hành tổng hợp danh sách đăng ký và chuẩn bị các bước tiếp theo cho chương trình thử nghiệm. Trong thời gian tới, <strong style="color: #000;">Vika</strong> sẽ liên hệ với Anh/Chị qua email hoặc Zalo để cung cấp thông tin chi tiết về việc tham gia trải nghiệm, hướng dẫn cài đặt và các hoạt động liên quan.</p>
+        
+        <p style="margin-bottom: 12px;">Anh/Chị có thể tham gia nhóm Zalo thông qua đường dẫn dưới đây:</p>
+        
+        <a href="https://zalo.me/g/ubsja1ciq2isacaibru2" target="_blank" class="button button-primary button-large" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; background: #0068FF; color: white; border-color: #0068FF; margin-bottom: 16px; min-height: 44px; padding: 0 16px;">
+          <img src="zalo.png" alt="Zalo" width="24" height="24" style="border-radius: 50%;">
+          Tham gia Cộng đồng Zalo
+        </a>
+        
+        <p style="margin-bottom: 10px;">Một lần nữa, <strong style="color: #000;">Vika</strong> xin trân trọng cảm ơn Anh/Chị <strong class="user-name-display" style="font-weight: 800; color: #000; font-size: 15px;"></strong> vì đã dành thời gian quan tâm và đồng hành cùng chúng tôi. Chúc Anh/Chị một ngày tốt lành!</p>
+        
+        <p style="margin-bottom: 16px;">Trân trọng,<br><strong style="font-weight: 800; color: #000;">Vika team</strong></p>
+        
+        <div style="background: var(--color-background); padding: 12px; border-radius: 8px; font-size: 13px; border: 1px solid var(--color-line);">
+          <p style="font-weight: 600; margin-bottom: 6px;">Mọi thắc mắc xin liên hệ:</p>
+          <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px;">
+            <li>➤ <strong>Hotline:</strong> 0566665536 (Mr. Tuấn Kiệt - Founder)</li>
+            <li>➤ <strong>Fanpage:</strong> Vika: Huấn luyện viên AI tại nhà</li>
+            <li>➤ <strong>Email:</strong> Vikavn.app@gmail.com</li>
+          </ul>
         </div>
       </div>
-      <h2 id="thankyou-title" style="margin-bottom: 16px; font-size: 28px; color: var(--color-ink);">Cảm ơn bạn!</h2>
-      <p style="margin-bottom: 32px; font-size: 16px; color: var(--color-muted); line-height: 1.6;">Thông tin của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để trải nghiệm VIKA.<br><br>Đừng quên tham gia cộng đồng Zalo của VIKA để cập nhật những thông tin mới nhất và nhận ưu đãi đặc biệt nhé!</p>
-      <a href="https://zalo.me/g/ubsja1ciq2isacaibru2" target="_blank" class="button button-primary button-large" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: #0068FF; color: white; border-color: #0068FF;">
-        <img src="zalo.png" alt="Zalo" width="24" height="24" style="border-radius: 50%;">
-        Tham gia Cộng đồng Zalo
-      </a>
     </div>
   </div>
 

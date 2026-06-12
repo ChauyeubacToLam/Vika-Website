@@ -389,6 +389,11 @@ if (experienceForm) {
       submitBtn.style.backgroundColor = '#4caf50';
       submitBtn.style.borderColor = '#4caf50';
       submitBtn.style.color = '#fff';
+
+      // Get user name
+      const nameInput = document.getElementById('exp-name');
+      const userName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : '';
+
       experienceForm.reset();
 
       // Close experience modal
@@ -398,12 +403,43 @@ if (experienceForm) {
         modal.setAttribute('aria-hidden', 'true');
       }
 
+      // Update name in modal
+      const nameDisplays = document.querySelectorAll('.user-name-display');
+      nameDisplays.forEach(el => el.textContent = userName);
+
       // Open Thank you modal
       const thankYouModal = document.getElementById('thankyou-modal');
       if (thankYouModal) {
         thankYouModal.classList.add('is-open');
         thankYouModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+
+        // Fire confetti
+        if (typeof confetti === 'function') {
+          var duration = 3 * 1000;
+          var end = Date.now() + duration;
+
+          (function frame() {
+            confetti({
+              particleCount: 5,
+              angle: 60,
+              spread: 55,
+              origin: { x: 0 },
+              colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff']
+            });
+            confetti({
+              particleCount: 5,
+              angle: 120,
+              spread: 55,
+              origin: { x: 1 },
+              colors: ['#26ccff', '#a25afd', '#ff5e7e', '#88ff5a', '#fcff42', '#ffa62d', '#ff36ff']
+            });
+
+            if (Date.now() < end) {
+              requestAnimationFrame(frame);
+            }
+          }());
+        }
       }
 
       setTimeout(() => {

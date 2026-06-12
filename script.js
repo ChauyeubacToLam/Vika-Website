@@ -188,34 +188,51 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
 
   if (!track || slides.length === 0) return;
 
-  const dots = slides.map((_, index) => {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.setAttribute("aria-label", `Đến nhận xét ${index + 1}`);
-    dot.addEventListener("click", () => slides[index].scrollIntoView({ behavior: "smooth", inline: "start" }));
-    dotsWrap?.appendChild(dot);
-    return dot;
-  });
+  let dots = [];
 
-  function getActiveIndex() {
-    const trackRect = track.getBoundingClientRect();
-    let activeIndex = 0;
-    let minDistance = Number.POSITIVE_INFINITY;
+  function renderDots() {
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = "";
+    dots = [];
+    
+    // We need to wait for layout to settle if slides are not yet sized
+    if (slides[0].getBoundingClientRect().width === 0) return;
 
-    slides.forEach((slide, index) => {
-      const rect = slide.getBoundingClientRect();
-      const distance = Math.abs(rect.left - trackRect.left);
-      if (distance < minDistance) {
-        minDistance = distance;
-        activeIndex = index;
-      }
-    });
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    if (maxScroll <= 0) return;
 
-    return activeIndex;
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "0");
+    const scrollStep = slideWidth + gap;
+    
+    const numDots = Math.ceil(maxScroll / scrollStep) + 1;
+
+    for (let i = 0; i < numDots; i++) {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Đến trang ${i + 1}`);
+      dot.addEventListener("click", () => {
+        track.scrollTo({ left: i * scrollStep, behavior: "smooth" });
+      });
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    }
   }
 
   function updateDots() {
-    const activeIndex = getActiveIndex();
+    if (!dots.length) return;
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(track).columnGap || "0");
+    const scrollStep = slideWidth + gap;
+
+    let activeIndex = 0;
+    if (track.scrollLeft >= maxScroll - 5) {
+      activeIndex = dots.length - 1;
+    } else {
+      activeIndex = Math.round(track.scrollLeft / scrollStep);
+    }
+
     dots.forEach((dot, index) => dot.setAttribute("aria-current", String(index === activeIndex)));
   }
 
@@ -225,11 +242,16 @@ document.querySelectorAll("[data-carousel]").forEach((carousel) => {
     track.scrollBy({ left: direction * (slideWidth + gap), behavior: "smooth" });
   }
 
+  renderDots();
+  updateDots();
+
   prev?.addEventListener("click", () => scrollBySlide(-1));
   next?.addEventListener("click", () => scrollBySlide(1));
   track.addEventListener("scroll", () => window.requestAnimationFrame(updateDots), { passive: true });
-  window.addEventListener("resize", updateDots);
-  updateDots();
+  window.addEventListener("resize", () => {
+    renderDots();
+    updateDots();
+  });
 });
 
 // Modal Handling

@@ -391,20 +391,27 @@ if (experienceForm) {
       submitBtn.style.color = '#fff';
       experienceForm.reset();
 
+      // Close experience modal
+      const modal = document.getElementById('experience-modal');
+      if (modal) {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      // Open Thank you modal
+      const thankYouModal = document.getElementById('thankyou-modal');
+      if (thankYouModal) {
+        thankYouModal.classList.add('is-open');
+        thankYouModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
       setTimeout(() => {
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
         submitBtn.style.backgroundColor = '';
         submitBtn.style.borderColor = '';
         submitBtn.style.color = '';
-        
-        // Close modal
-        const modal = document.getElementById('experience-modal');
-        if (modal) {
-          modal.classList.remove('is-open');
-          modal.setAttribute('aria-hidden', 'true');
-          document.body.style.overflow = '';
-        }
       }, 3000);
 
     } catch (error) {

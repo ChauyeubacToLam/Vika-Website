@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="preload" href="vika-wordmark-blacktext.png" as="image" />
-  <link rel="stylesheet" href="styles.css?v=1.1" />
+  <link rel="stylesheet" href="styles.css?v=1.2" />
   <style>
     .chat-notification {
       position: fixed;
@@ -850,9 +850,6 @@
         <a href="https://web.facebook.com/profile.php?id=61590066156123&locale=vi_VN">Facebook</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="container">Dữ liệu của bạn luôn an toàn trên thiết bị của bạn. Xử lý hoàn toàn on-device.</div>
-    </div>
   </footer>
 
 
@@ -955,7 +952,27 @@
     </div>
   </div>
 
-  <script src="script.js?v=1.1"></script>
+  <div class="modal-overlay" id="thankyou-modal" aria-hidden="true" data-modal>
+    <div class="modal-content text-center" role="dialog" aria-modal="true" aria-labelledby="thankyou-title" style="padding: 40px 24px; text-align: center;">
+      <button class="modal-close" aria-label="Đóng" data-modal-close>&times;</button>
+      <div class="success-checkmark">
+        <div class="check-icon">
+          <span class="icon-line line-tip"></span>
+          <span class="icon-line line-long"></span>
+          <div class="icon-circle"></div>
+          <div class="icon-fix"></div>
+        </div>
+      </div>
+      <h2 id="thankyou-title" style="margin-bottom: 16px; font-size: 28px; color: var(--color-ink);">Cảm ơn bạn!</h2>
+      <p style="margin-bottom: 32px; font-size: 16px; color: var(--color-muted); line-height: 1.6;">Thông tin của bạn đã được ghi nhận. Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất để trải nghiệm VIKA.<br><br>Đừng quên tham gia cộng đồng Zalo của VIKA để cập nhật những thông tin mới nhất và nhận ưu đãi đặc biệt nhé!</p>
+      <a href="https://zalo.me/g/ubsja1ciq2isacaibru2" target="_blank" class="button button-primary button-large" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: #0068FF; color: white; border-color: #0068FF;">
+        <img src="zalo.png" alt="Zalo" width="24" height="24" style="border-radius: 50%;">
+        Tham gia Cộng đồng Zalo
+      </a>
+    </div>
+  </div>
+
+  <script src="script.js?v=1.2"></script>
 </body>
 
 </html>

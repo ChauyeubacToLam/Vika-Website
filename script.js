@@ -170,13 +170,57 @@ if ("IntersectionObserver" in window) {
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     const id = link.getAttribute("href");
-    if (!id || id === "#") return;
+    if (!id || id === "#") {
+      event.preventDefault();
+      openModal('coming-soon-modal');
+      return;
+    }
     const target = document.querySelector(id);
-    if (!target) return;
+    if (!target) {
+      event.preventDefault();
+      openModal('coming-soon-modal');
+      return;
+    }
     event.preventDefault();
     target.scrollIntoView({ behavior: "smooth", block: "start" });
     history.pushState(null, "", id);
   });
+});
+
+document.addEventListener('click', (event) => {
+  const target = event.target;
+  const link = target.closest('a');
+  if (link) {
+    const href = link.getAttribute('href');
+    if (!href || href === '') {
+      event.preventDefault();
+      openModal('coming-soon-modal');
+      return;
+    }
+  }
+
+  const btn = target.closest('button');
+  if (btn) {
+    const isInteractive = btn.hasAttribute('data-menu-toggle') || 
+                          btn.hasAttribute('data-mobile-accordion') || 
+                          btn.hasAttribute('data-mega-trigger') || 
+                          btn.hasAttribute('data-carousel-prev') || 
+                          btn.hasAttribute('data-carousel-next') || 
+                          btn.hasAttribute('data-banner-prev') || 
+                          btn.hasAttribute('data-banner-next') || 
+                          btn.hasAttribute('data-modal-trigger') || 
+                          btn.hasAttribute('data-modal-close') || 
+                          btn.type === 'submit' || 
+                          btn.id === 'chat-toggle' || 
+                          btn.id === 'chat-close' || 
+                          btn.classList.contains('banner-dot') ||
+                          btn.closest('.banner-dots') ||
+                          btn.closest('.chat-notification');
+    if (!isInteractive) {
+      event.preventDefault();
+      openModal('coming-soon-modal');
+    }
+  }
 });
 
 document.querySelectorAll("[data-carousel]").forEach((carousel) => {

@@ -576,6 +576,62 @@ if (counterElements.length > 0 && "IntersectionObserver" in window) {
 }
 
 // Chatbox Integration
+const CHAT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbycj6JbUAkJCmbZDa9VXJ-_tM60mIiv6918DSdyH8gi3CSfbcRfm9RrmhecNwxj4VVyJw/exec';
+
+function normalizeVietnamPhone(phone) {
+  const rawPhone = phone.trim().replace(/\s+/g, '');
+  if (rawPhone.startsWith('+')) return rawPhone;
+  return '+84' + (rawPhone.startsWith('0') ? rawPhone.slice(1) : rawPhone);
+}
+
+async function sendSupportRequest(data) {
+  await fetch(CHAT_WEB_APP_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      'Content-Type': 'text/plain',
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+const supportForm = document.getElementById('support-form');
+if (supportForm) {
+  supportForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const submitButton = document.getElementById('support-submit');
+    const statusElement = document.getElementById('support-form-status');
+    const formData = new FormData(supportForm);
+    const requestType = formData.get('type');
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Đang gửi...';
+    statusElement.textContent = '';
+    statusElement.className = 'support-form-status';
+
+    try {
+      await sendSupportRequest({
+        name: formData.get('name').trim(),
+        phone: normalizeVietnamPhone(formData.get('phone')),
+        email: formData.get('email').trim(),
+        message: `[${requestType}] ${formData.get('message').trim()}`,
+      });
+
+      supportForm.reset();
+      statusElement.textContent = 'Yêu cầu đã được gửi. Đội ngũ VIKA sẽ liên hệ với bạn sớm nhất.';
+      statusElement.classList.add('is-success');
+    } catch (error) {
+      console.error('Lỗi khi gửi yêu cầu hỗ trợ:', error);
+      statusElement.textContent = 'Chưa thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ qua email.';
+      statusElement.classList.add('is-error');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Gửi yêu cầu';
+    }
+  });
+}
+
 const chatToggleBtn = document.getElementById('chat-toggle');
 const chatboxContainer = document.getElementById('chatbox');
 const chatCloseBtn = document.getElementById('chat-close');
@@ -651,14 +707,9 @@ async function startAutomatedWelcome() {
 if (chatInfoForm) {
   chatInfoForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    let rawPhone = document.getElementById('chat-phone').value.trim();
-    if (!rawPhone.startsWith('+')) {
-      rawPhone = '+84' + (rawPhone.startsWith('0') ? rawPhone.slice(1) : rawPhone);
-    }
-
     chatUserInfo = {
       name: document.getElementById('chat-name').value,
-      phone: rawPhone,
+      phone: normalizeVietnamPhone(document.getElementById('chat-phone').value),
       email: document.getElementById('chat-email').value,
     };
 
@@ -692,20 +743,8 @@ if (chatSendForm) {
       message: messageText
     };
 
-    // URL này sẽ được thay thế sau khi tạo Apps Script
-    const CHAT_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbycj6JbUAkJCmbZDa9VXJ-_tM60mIiv6918DSdyH8gi3CSfbcRfm9RrmhecNwxj4VVyJw/exec'; 
-
     try {
-      if (CHAT_WEB_APP_URL) {
-        await fetch(CHAT_WEB_APP_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'text/plain',
-          },
-          body: JSON.stringify(dataToSend),
-        });
-      }
+      await sendSupportRequest(dataToSend);
 
       // Simulate network delay for bot reply
       setTimeout(() => {
